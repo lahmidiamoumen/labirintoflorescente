@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,16 +15,16 @@
     <meta property="og:url" content="https://labirintoflorescente.com/" />
     <meta property="og:title" content="Labirinto Florescente | Specialized Containment Solutions" />
     <meta property="og:description" content="Advanced environmental containment, thermo-retractable films, and construction safety solutions." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Labirinto Florescente | Specialized Containment" />
     <meta property="twitter:description" content="Specialists in thermo-retractable containment and safety netting." />
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80" />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -34,18 +34,40 @@
             },
             colors: {
               brand: {
-                dark: '#0f172a',
-                blue: '#0ea5e9',
-                orange: '#f97316',
-                gray: '#334155'
+                dark: '#0f172a', // Slate 900
+                darker: '#020617', // Slate 950
+                blue: '#0ea5e9', // Sky 500
+                orange: '#f97316', // Orange 500
+                orangeDark: '#c2410c', // Orange 700
+                gray: '#334155' // Slate 700
               }
+            },
+            backgroundImage: {
+              'industrial-gradient': 'linear-gradient(to bottom right, #0f172a, #1e293b)',
             }
           }
         }
       }
     </script>
     <style>
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px; /* Offset for fixed navbar */
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
     </style>
   <script type="importmap">
 {
@@ -58,7 +80,7 @@
 }
 </script>
 </head>
-  <body>
+  <body class="bg-brand-dark text-slate-100 antialiased selection:bg-brand-orange selection:text-white">
     <div id="root"></div>
   </body>
 </html>

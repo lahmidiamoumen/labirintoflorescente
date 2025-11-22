@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ShieldCheck } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -11,50 +11,66 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
   const t = TRANSLATIONS[language].hero;
 
   return (
-    <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-brand-dark">
+    <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-darker">
       
-      {/* Background Image with Overlay */}
+      {/* Background Image with Advanced Overlay */}
       <div className="absolute inset-0 z-0">
+        {/* Industrial Structure Image */}
         <img 
-          src="https://picsum.photos/seed/construction2/1920/1080" 
+          src="https://images.unsplash.com/photo-1581094794329-cd2a1fb44a5b?q=80&w=2070&auto=format&fit=crop" 
           alt="Industrial Construction Site" 
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover scale-105 animate-[pulse_60s_ease-in-out_infinite]" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
+        {/* Heavy Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-darker via-brand-dark/90 to-brand-dark/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-transparent to-transparent"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center px-3 py-1 rounded-full border border-brand-orange/50 bg-brand-orange/10 text-brand-orange text-xs font-semibold tracking-wide uppercase mb-6 backdrop-blur-sm">
-          {language === Language.PT ? "Líder em Confinamento" : language === Language.FR ? "Leader en Confinement" : "Containment Leaders"}
-        </div>
-        
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 drop-shadow-lg">
-          LABIRINTO<span className="text-brand-orange">FLORESCENTE</span>
-        </h1>
-        
-        <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-gray-300 font-light mb-10">
-          {t.headline}
-        </p>
-        
-        <p className="mt-2 max-w-3xl mx-auto text-base md:text-lg text-gray-400 mb-12">
-          {t.subheadline}
-        </p>
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-orange via-brand-blue to-brand-orange opacity-50"></div>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a 
-            href="#contact" 
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-brand-orange hover:bg-orange-600 md:text-lg md:px-10 transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
-          >
-            {t.cta}
-            <ChevronRight className="ml-2 -mr-1 h-5 w-5" />
-          </a>
-          <a 
-            href="#services" 
-            className="inline-flex items-center justify-center px-8 py-4 border border-gray-500 text-base font-medium rounded-md text-gray-300 hover:text-white hover:border-white hover:bg-white/10 md:text-lg md:px-10 transition-all duration-300"
-          >
-             {t.learnMore}
-          </a>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-brand-orange/30 bg-brand-orange/10 text-brand-orange text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
+            <ShieldCheck className="w-4 h-4 mr-2" />
+            {language === Language.PT ? "Líder em Confinamento Industrial" : language === Language.FR ? "Leader en Confinement Industriel" : "Industrial Containment Leaders"}
+            </div>
+            
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight mb-8 leading-tight drop-shadow-2xl">
+            LABIRINTO<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-yellow-500">FLORESCENTE</span>
+            </h1>
+            
+            <p className="text-xl md:text-3xl text-slate-300 font-light mb-6 border-l-4 border-brand-orange pl-6 max-w-3xl">
+            {t.headline}
+            </p>
+            
+            <p className="text-base md:text-lg text-slate-400 mb-12 max-w-2xl pl-6 font-medium leading-relaxed">
+            {t.subheadline}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-5 pl-0 sm:pl-6">
+            <a 
+                href="#contact" 
+                className="group inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-sm text-white bg-brand-orange hover:bg-orange-600 transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] uppercase tracking-wide"
+            >
+                {t.cta}
+                <ChevronRight className="ml-2 -mr-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a 
+                href="#services" 
+                className="inline-flex items-center justify-center px-8 py-4 border border-slate-600 text-base font-bold rounded-sm text-slate-300 hover:text-white hover:border-white hover:bg-white/5 transition-all duration-300 uppercase tracking-wide backdrop-blur-sm"
+            >
+                {t.learnMore}
+            </a>
+            </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-slate-500 rounded-full flex justify-center p-1">
+          <div className="w-1 h-2 bg-brand-orange rounded-full animate-scroll"></div>
         </div>
       </div>
     </section>

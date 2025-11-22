@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, HardHat } from 'lucide-react';
+import { ShieldCheck, Award, HardHat, CheckCircle2 } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -11,73 +11,91 @@ const About: React.FC<AboutProps> = ({ language }) => {
   const t = TRANSLATIONS[language].about;
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+    <section id="about" className="py-32 bg-white relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 transform -skew-x-12 translate-x-20"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
           
+          {/* Image Grid */}
+          <div className="relative mb-16 lg:mb-0 group">
+            <div className="absolute -inset-4 bg-brand-orange/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="aspect-w-4 aspect-h-5 rounded-xl overflow-hidden shadow-2xl border-4 border-white relative">
+              {/* Building Wrapped in White Shrink Wrap */}
+              <img 
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" 
+                alt="Large building completely encapsulated in white thermo-retractable containment film with scaffolding" 
+                className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700 grayscale-[10%] hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <p className="font-bold text-lg border-l-4 border-brand-orange pl-3">
+                  {language === Language.FR ? "Confinement Intégral" : language === Language.PT ? "Confinamento Integral" : "Total Containment"}
+                </p>
+              </div>
+            </div>
+            {/* Floating Card */}
+            <div className="absolute -bottom-10 -right-10 bg-brand-dark p-8 rounded-lg shadow-xl hidden md:block max-w-xs border-t-4 border-brand-orange">
+              <div className="flex items-center mb-3">
+                <HardHat className="text-brand-orange h-6 w-6 mr-3" />
+                <span className="text-white font-bold uppercase tracking-wider text-xs">Expert Engineering</span>
+              </div>
+              <p className="text-slate-300 text-sm font-light leading-relaxed">
+                Weather-resistant, dust-tight, and secure. We wrap entire structures for safety and environmental control.
+              </p>
+            </div>
+          </div>
+
           {/* Text Content */}
-          <div className="mb-12 lg:mb-0">
-            <h2 className="text-brand-orange font-semibold tracking-wide uppercase text-sm mb-2">
-              {t.companyName}
-            </h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6">
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+                <span className="h-px w-8 bg-brand-orange"></span>
+                <h2 className="text-brand-orange font-bold tracking-widest uppercase text-sm">
+                {t.companyName}
+                </h2>
+            </div>
+            <h3 className="text-4xl md:text-5xl font-extrabold text-brand-dark mb-8 leading-tight">
               {t.title}
             </h3>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              {t.description}
-            </p>
-            <div className="bg-gray-50 border-l-4 border-brand-blue p-4 mb-8">
-              <p className="text-gray-700 italic text-sm">
+            <div className="text-lg text-slate-600 mb-8 leading-relaxed space-y-6">
+              <p>{t.description}</p>
+            </div>
+            
+            <div className="bg-slate-100 rounded-lg p-6 mb-10 border border-slate-200">
+              <p className="text-brand-dark font-medium text-sm flex items-start">
+                <CheckCircle2 className="h-5 w-5 text-brand-blue mr-3 flex-shrink-0 mt-0.5" />
                 {t.specialization}
               </p>
             </div>
 
             {/* Features List */}
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+                <div className="flex-shrink-0 bg-brand-blue/10 p-2 rounded-md">
                   <ShieldCheck className="h-6 w-6 text-brand-blue" />
                 </div>
-                <div className="ml-3">
-                  <h4 className="text-base font-medium text-brand-dark">Safety First</h4>
-                  <p className="text-sm text-gray-500">Certified safety nets and rigid protocols.</p>
+                <div className="ml-4">
+                  <h4 className="text-base font-bold text-brand-dark">ISO Compliance</h4>
+                  <p className="text-xs text-slate-500 mt-1">Strict adherence to EU safety standards.</p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <Award className="h-6 w-6 text-brand-blue" />
+              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+                <div className="flex-shrink-0 bg-brand-orange/10 p-2 rounded-md">
+                  <Award className="h-6 w-6 text-brand-orange" />
                 </div>
-                <div className="ml-3">
-                  <h4 className="text-base font-medium text-brand-dark">Quality Assurance</h4>
-                  <p className="text-sm text-gray-500">Premium materials for maximum durability.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <HardHat className="h-6 w-6 text-brand-blue" />
-                </div>
-                <div className="ml-3">
-                  <h4 className="text-base font-medium text-brand-dark">Specialized Crew</h4>
-                  <p className="text-sm text-gray-500">Expert team for complex environmental tasks.</p>
+                <div className="ml-4">
+                  <h4 className="text-base font-bold text-brand-dark">Premium Materials</h4>
+                  <p className="text-xs text-slate-500 mt-1">High-grade heat shrink films & nets.</p>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Image Grid */}
-          <div className="relative">
-            <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden shadow-2xl">
-              {/* Image illustrating containment/worker in safety gear */}
-              <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" 
-                alt="Specialized construction worker in safety equipment" 
-                className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="absolute -bottom-10 -left-10 bg-brand-dark p-6 rounded-lg shadow-xl hidden md:block max-w-xs z-10">
-              <p className="text-white text-sm font-light">
-                "Excellence in containment is not just about covering up; it's about creating a safe, controlled environment for progress."
-              </p>
+            
+            <div className="mt-10">
+                <a href="#contact" className="text-brand-orange font-bold hover:text-brand-orangeDark transition-colors flex items-center group">
+                    {language === Language.PT ? "Conheça a nossa equipa" : language === Language.FR ? "Rencontrer l'équipe" : "Meet our team"} 
+                    <span className="ml-2 transform group-hover:translate-x-2 transition-transform">→</span>
+                </a>
             </div>
           </div>
 
