@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { Language } from '../types';
@@ -28,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
     <nav 
       className={`fixed w-full z-50 transition-all duration-500 border-b ${
         scrolled 
-          ? 'bg-brand-dark/90 backdrop-blur-md border-brand-gray/50 py-2 shadow-lg' 
+          ? 'bg-brand-dark/90 backdrop-blur-xl border-brand-gray/50 py-2 shadow-lg' 
           : 'bg-transparent border-transparent py-4'
       }`}
       role="navigation" 
@@ -38,12 +39,12 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <div className="flex-shrink-0 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+          <div className="flex-shrink-0 group cursor-pointer flex items-center gap-3" onClick={() => window.scrollTo(0,0)}>
             <div className="flex flex-col leading-none">
-              <span className="font-bold text-xl md:text-2xl tracking-wider text-white group-hover:text-slate-200 transition-colors">
+              <span className="font-bold text-lg sm:text-xl md:text-2xl tracking-wider text-white group-hover:text-slate-200 transition-colors">
                 LABIRINTO
               </span>
-              <span className="text-[0.65rem] md:text-xs text-brand-orange tracking-[0.35em] font-semibold group-hover:text-brand-blue transition-colors">
+              <span className="text-[0.6rem] sm:text-[0.65rem] md:text-xs text-brand-orange tracking-[0.25em] md:tracking-[0.35em] font-semibold group-hover:text-brand-blue transition-colors">
                 FLORESCENTE
               </span>
             </div>
@@ -58,12 +59,14 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
               
               {/* Accessible Language Switcher */}
               <div className="relative group">
+                <label htmlFor="language-select" className="sr-only">Select Language</label>
                 <div className="flex items-center bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-colors border border-white/10">
                   <Globe className="text-brand-orange mr-2 h-4 w-4" aria-hidden="true" />
                   <select
+                    id="language-select"
                     value={language}
                     onChange={(e) => setLanguage(e.target.value as Language)}
-                    className="appearance-none bg-transparent border-none text-sm font-medium text-white focus:ring-0 cursor-pointer pr-6 py-0"
+                    className="appearance-none bg-transparent border-none text-sm font-medium text-white focus:ring-0 cursor-pointer pr-6 py-0 outline-none"
                     aria-label="Select language"
                     style={{ backgroundImage: 'none' }} 
                   >
@@ -87,9 +90,9 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded={isOpen}
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -99,11 +102,11 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
 
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden fixed inset-0 z-40 bg-brand-dark/95 backdrop-blur-xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} 
+        className={`md:hidden fixed inset-0 z-40 bg-slate-900 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} 
         style={{ top: '0', paddingTop: '80px' }}
       >
         <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col h-full">
-            <button onClick={toggleMenu} className="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <button onClick={toggleMenu} className="absolute top-6 right-6 text-slate-400 hover:text-white" aria-label="Close menu">
                 <X size={32} />
             </button>
             
@@ -121,6 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
                     <button
                         key={lang}
                         onClick={() => { setLanguage(lang); toggleMenu(); }}
+                        aria-label={`Switch to ${lang}`}
                         className={`px-4 py-2 rounded-full text-sm font-bold border ${language === lang ? 'bg-brand-orange border-brand-orange text-white' : 'border-slate-700 text-slate-400'}`}
                     >
                         {lang}

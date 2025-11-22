@@ -1,3 +1,4 @@
+
 export enum Language {
   EN = 'EN',
   FR = 'FR',
@@ -72,5 +73,11 @@ export interface TranslationContent {
     privacy: LegalPageContent;
     terms: LegalPageContent;
     cookies: LegalPageContent;
+  };
+  cookieConsent: {
+    message: string;
+    accept: string;
+    decline: string;
+    privacyLink: string;
   };
 }

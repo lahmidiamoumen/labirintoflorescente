@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,11 +9,41 @@ import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
+import CookieConsent from './components/CookieConsent';
 import { Language } from './types';
 
 const App: React.FC = () => {
-  const [language, setLanguage] = useState<Language>(Language.EN);
+  // Function to detect initial language based on localStorage or Browser Settings
+  const getInitialLanguage = (): Language => {
+    // 1. Check Local Storage (User preference persistence)
+    const savedLang = localStorage.getItem('app-language') as Language;
+    if (savedLang && Object.values(Language).includes(savedLang)) {
+      return savedLang;
+    }
+
+    // 2. Check Browser Language (Auto-detection)
+    if (typeof navigator !== 'undefined' && navigator.language) {
+      const browserLang = navigator.language.toLowerCase();
+      if (browserLang.startsWith('pt')) {
+        return Language.PT;
+      }
+      if (browserLang.startsWith('fr')) {
+        return Language.FR;
+      }
+    }
+
+    // 3. Default Fallback
+    return Language.EN;
+  };
+
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [currentRoute, setCurrentRoute] = useState(window.location.hash);
+
+  // Persist language choice when changed
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem('app-language', lang);
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -45,11 +76,12 @@ const App: React.FC = () => {
 
   return (
     <div className="antialiased text-gray-900 bg-white font-sans">
-      <Navbar language={language} setLanguage={setLanguage} />
+      <Navbar language={language} setLanguage={handleSetLanguage} />
       <main>
         {renderContent()}
       </main>
       <Footer language={language} />
+      <CookieConsent language={language} />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ShieldCheck, Award, HardHat, CheckCircle2 } from 'lucide-react';
 import { Language } from '../types';
@@ -11,7 +12,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
   const t = TRANSLATIONS[language].about;
 
   return (
-    <section id="about" className="py-32 bg-white relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-16 lg:py-32 bg-white relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 transform -skew-x-12 translate-x-20"></div>
 
@@ -19,24 +20,40 @@ const About: React.FC<AboutProps> = ({ language }) => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
           
           {/* Image Grid */}
-          <div className="relative mb-16 lg:mb-0 group">
+          <div className="relative mb-20 lg:mb-0 group">
             <div className="absolute -inset-4 bg-brand-orange/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="aspect-w-4 aspect-h-5 rounded-xl overflow-hidden shadow-2xl border-4 border-white relative">
-              {/* Building Wrapped in White Shrink Wrap */}
+            
+            {/* Main Image */}
+            <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-white relative z-10">
+              {/* Building Wrapped in White Shrink Wrap / Scaffolding */}
               <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" 
-                alt="Large building completely encapsulated in white thermo-retractable containment film with scaffolding" 
+                src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=572,h=689,fit=crop,trim=0;476.5360824742268;965.7218543046358;0/mxBrMLQeW1Uo76nJ/img_0977-A85pEPM60oiKRGLz.jpg" 
+                alt="Large building covered in scaffolding and containment netting" 
+                loading="lazy"
+                width="572"
+                height="689"
                 className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700 grayscale-[10%] hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <p className="font-bold text-lg border-l-4 border-brand-orange pl-3">
+                <p className="font-bold text-lg border-l-4 border-brand-orange pl-3 drop-shadow-md">
                   {language === Language.FR ? "Confinement Intégral" : language === Language.PT ? "Confinamento Integral" : "Total Containment"}
                 </p>
               </div>
             </div>
-            {/* Floating Card */}
-            <div className="absolute -bottom-10 -right-10 bg-brand-dark p-8 rounded-lg shadow-xl hidden md:block max-w-xs border-t-4 border-brand-orange">
+
+            {/* Secondary Image (New) - Floating Bottom Left */}
+            <div className="absolute -bottom-12 -left-4 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 rounded-lg border-4 border-white shadow-xl overflow-hidden hidden sm:block z-20 animate-[fadeIn_1s_ease-out]">
+               <img 
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" 
+                alt="Industrial safety detail" 
+                loading="lazy"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Floating Info Card - Floating Bottom Right */}
+            <div className="absolute -bottom-8 -right-4 md:-right-10 bg-brand-dark p-6 sm:p-8 rounded-lg shadow-xl hidden lg:block max-w-xs border-t-4 border-brand-orange z-30">
               <div className="flex items-center mb-3">
                 <HardHat className="text-brand-orange h-6 w-6 mr-3" />
                 <span className="text-white font-bold uppercase tracking-wider text-xs">Expert Engineering</span>
@@ -51,14 +68,14 @@ const About: React.FC<AboutProps> = ({ language }) => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
                 <span className="h-px w-8 bg-brand-orange"></span>
-                <h2 className="text-brand-orange font-bold tracking-widest uppercase text-sm">
+                <h2 className="text-brand-orange font-bold tracking-widest uppercase text-xs sm:text-sm">
                 {t.companyName}
                 </h2>
             </div>
-            <h3 className="text-4xl md:text-5xl font-extrabold text-brand-dark mb-8 leading-tight">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 sm:mb-8 leading-tight">
               {t.title}
             </h3>
-            <div className="text-lg text-slate-600 mb-8 leading-relaxed space-y-6">
+            <div className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed space-y-6">
               <p>{t.description}</p>
             </div>
             
@@ -71,7 +88,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
 
             {/* Features List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
                 <div className="flex-shrink-0 bg-brand-blue/10 p-2 rounded-md">
                   <ShieldCheck className="h-6 w-6 text-brand-blue" />
                 </div>
@@ -80,7 +97,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
                   <p className="text-xs text-slate-500 mt-1">Strict adherence to EU safety standards.</p>
                 </div>
               </div>
-              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
                 <div className="flex-shrink-0 bg-brand-orange/10 p-2 rounded-md">
                   <Award className="h-6 w-6 text-brand-orange" />
                 </div>

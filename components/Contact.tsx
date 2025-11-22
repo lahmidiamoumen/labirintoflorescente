@@ -19,7 +19,7 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
     message: ''
   });
 
-  const COMPANY_EMAIL = "LABIRINTOFLORESCENTE@gmail.com";
+  const COMPANY_EMAIL = "labirintoflorescente@gmail.com";
   const COMPANY_PHONE = "+351 920 681 930";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -42,70 +42,71 @@ Message / Project Details:
 ${formData.message}
     `.trim();
 
-    // Use encodeURIComponent to ensure special characters don't break the link
     window.location.href = `mailto:${COMPANY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
-    <section id="contact" className="relative py-32 bg-brand-darker text-white overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-24 lg:py-32 bg-brand-darker text-white overflow-hidden">
       
       {/* Background Texture */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           
           {/* Contact Info & CTA */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-10 sm:space-y-12">
             <div>
-                <h2 className="text-brand-orange font-bold uppercase tracking-widest text-sm mb-4">
+                <h2 className="text-brand-orange font-bold uppercase tracking-widest text-xs sm:text-sm mb-4">
                 {language === Language.PT ? "Fale Connosco" : language === Language.FR ? "Contactez-nous" : "Contact Us"}
                 </h2>
-                <h3 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
                 {t.title}
                 </h3>
-                <p className="text-slate-400 text-lg leading-relaxed border-l-2 border-slate-700 pl-6">
+                <p className="text-slate-400 text-base sm:text-lg leading-relaxed border-l-2 border-slate-700 pl-6">
                 {t.subtitle}
                 </p>
             </div>
 
-            <div className="space-y-8">
-              <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="flex items-start group">
-                <div className="bg-slate-800 p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300">
-                  <Phone className="h-6 w-6 text-brand-orange group-hover:text-white" />
+            <div className="space-y-6 sm:space-y-8">
+              <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="flex items-start group" aria-label={`Call us at ${COMPANY_PHONE}`}>
+                <div className="bg-slate-800 p-3 sm:p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300 flex-shrink-0">
+                  <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-brand-orange group-hover:text-white" />
                 </div>
-                <div className="ml-6">
+                <div className="ml-4 sm:ml-6">
                   <p className="text-xs text-slate-400 uppercase tracking-wider">Phone</p>
-                  <p className="text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors whitespace-nowrap">{COMPANY_PHONE}</p>
+                  <p className="text-lg sm:text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors whitespace-nowrap">{COMPANY_PHONE}</p>
                 </div>
               </a>
               
-              <a href={`mailto:${COMPANY_EMAIL}`} className="flex items-start group">
-                <div className="bg-slate-800 p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300">
-                   <Mail className="h-6 w-6 text-brand-orange group-hover:text-white" />
+              <a href={`mailto:${COMPANY_EMAIL}`} className="flex items-start group" aria-label={`Email us at ${COMPANY_EMAIL}`}>
+                <div className="bg-slate-800 p-3 sm:p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300 flex-shrink-0">
+                   <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-brand-orange group-hover:text-white" />
                 </div>
-                <div className="ml-6 overflow-hidden">
+                <div className="ml-4 sm:ml-6 w-full overflow-hidden">
                   <p className="text-xs text-slate-400 uppercase tracking-wider">Email</p>
-                  <p className="text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors break-all md:break-normal">{COMPANY_EMAIL}</p>
+                  <p className="text-sm sm:text-base md:text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors break-all">
+                    {COMPANY_EMAIL}
+                  </p>
                 </div>
               </a>
 
               <div className="flex items-start group">
-                <div className="bg-slate-800 p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300">
-                  <MapPin className="h-6 w-6 text-brand-orange group-hover:text-white" />
+                <div className="bg-slate-800 p-3 sm:p-4 rounded-xl group-hover:bg-brand-orange transition-colors duration-300 flex-shrink-0">
+                  <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-brand-orange group-hover:text-white" />
                 </div>
-                <div className="ml-6">
+                <div className="ml-4 sm:ml-6">
                   <p className="text-xs text-slate-400 uppercase tracking-wider">{t.address}</p>
-                  <p className="text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors">Lisboa, Portugal</p>
+                  <p className="text-lg sm:text-xl font-semibold mt-1 group-hover:text-brand-orange transition-colors">Lisboa, Portugal</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Request Quote Form */}
-          <div className="lg:col-span-3 bg-white rounded-2xl p-8 md:p-12 shadow-2xl text-gray-900 border-t-8 border-brand-orange">
+          <div className="lg:col-span-3 bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl text-gray-900 border-t-8 border-brand-orange">
             <div className="mb-8">
-                <h4 className="text-2xl font-bold text-brand-dark">
+                <h4 className="text-xl sm:text-2xl font-bold text-brand-dark">
                   {language === Language.PT ? "Pedir Orçamento" : language === Language.FR ? "Demander un Devis" : "Request a Quote"}
                 </h4>
                 <p className="text-slate-500 text-sm mt-2">
@@ -117,10 +118,10 @@ ${formData.message}
                 </p>
             </div>
 
-            <form className="space-y-8" onSubmit={handleQuoteRequest}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form className="space-y-6 sm:space-y-8" onSubmit={handleQuoteRequest}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="relative">
-                  <label htmlFor="name" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'name' || formData.name ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-gray-400'}`}>
+                  <label htmlFor="name" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'name' || formData.name ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-slate-500'}`}>
                     {t.form.name}
                   </label>
                   <input
@@ -131,12 +132,12 @@ ${formData.message}
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="block w-full px-4 py-4 rounded-lg bg-slate-50 border-2 border-slate-100 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium"
+                    className="block w-full px-4 py-3 sm:py-4 rounded-lg bg-slate-50 border-2 border-slate-200 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium text-brand-dark text-base"
                   />
                 </div>
 
                 <div className="relative">
-                  <label htmlFor="email" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'email' || formData.email ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-gray-400'}`}>
+                  <label htmlFor="email" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'email' || formData.email ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-slate-500'}`}>
                     {t.form.email}
                   </label>
                   <input
@@ -147,14 +148,14 @@ ${formData.message}
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="block w-full px-4 py-4 rounded-lg bg-slate-50 border-2 border-slate-100 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium"
+                    className="block w-full px-4 py-3 sm:py-4 rounded-lg bg-slate-50 border-2 border-slate-200 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium text-brand-dark text-base"
                   />
                 </div>
               </div>
 
               <div className="relative">
                  {/* Custom select wrapper for style */}
-                <label htmlFor="service" className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">
+                <label htmlFor="service" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">
                   {t.form.service}
                 </label>
                 <div className="relative">
@@ -163,7 +164,7 @@ ${formData.message}
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="block w-full px-4 py-4 rounded-lg bg-slate-50 border-2 border-slate-100 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none appearance-none font-medium cursor-pointer text-brand-dark"
+                    className="block w-full px-4 py-3 sm:py-4 rounded-lg bg-slate-50 border-2 border-slate-200 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none appearance-none font-medium cursor-pointer text-brand-dark text-base"
                     >
                     <option value="" disabled>{t.form.servicePlaceholder}</option>
                     <option value="Heat-Shrink Containment">{services.containment.title}</option>
@@ -179,7 +180,7 @@ ${formData.message}
               </div>
 
               <div className="relative">
-                <label htmlFor="message" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'message' || formData.message ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-gray-400'}`}>
+                <label htmlFor="message" className={`absolute left-4 transition-all duration-200 pointer-events-none ${focusedField === 'message' || formData.message ? '-top-2.5 text-xs bg-white px-1 text-brand-orange' : 'top-4 text-slate-500'}`}>
                   {t.form.message}
                 </label>
                 <textarea
@@ -190,13 +191,13 @@ ${formData.message}
                   onFocus={() => setFocusedField('message')}
                   onBlur={() => setFocusedField(null)}
                   required
-                  className="block w-full px-4 py-4 rounded-lg bg-slate-50 border-2 border-slate-100 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium resize-none"
+                  className="block w-full px-4 py-3 sm:py-4 rounded-lg bg-slate-50 border-2 border-slate-200 focus:border-brand-orange focus:bg-white focus:ring-0 transition-colors outline-none font-medium resize-none text-brand-dark text-base"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center py-5 px-8 border border-transparent rounded-lg shadow-lg text-base font-bold text-white bg-brand-orange hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange transition-all duration-300 transform hover:-translate-y-1 hover:shadow-orange-500/30 uppercase tracking-widest"
+                className="w-full flex items-center justify-center py-4 sm:py-5 px-8 border border-transparent rounded-lg shadow-lg text-base font-bold text-white bg-brand-orange hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange transition-all duration-300 transform hover:-translate-y-1 hover:shadow-orange-500/30 uppercase tracking-widest"
               >
                 {t.form.submit}
                 <Send className="ml-2 h-5 w-5" />

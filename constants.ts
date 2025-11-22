@@ -1,3 +1,4 @@
+
 import { Language, TranslationContent } from './types';
 
 export const TRANSLATIONS: Record<Language, TranslationContent> = {
@@ -78,7 +79,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
         sections: [
           { heading: "Services", content: "Labirinto Florescente provides specialized construction and containment services. All services are subject to a separate written agreement." },
           { heading: "Intellectual Property", content: "All content on this website, including text, graphics, and logos, is the property of Labirinto Florescente." },
-          { heading: "Limitation of Liability", content: "Labirinto Florescente shall not be liable for any indirect, incidental, or consequential damages arising out of the use of our website." }
+          { heading: "Limitation de Liability", content: "Labirinto Florescente shall not be liable for any indirect, incidental, or consequential damages arising out of the use of our website." }
         ]
       },
       cookies: {
@@ -91,6 +92,12 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
           { heading: "Managing Cookies", content: "You can control and manage cookies through your browser settings." }
         ]
       }
+    },
+    cookieConsent: {
+      message: "We use cookies to ensure you get the best experience on our website. By continuing to visit this site you agree to our use of cookies.",
+      accept: "Accept",
+      decline: "Decline",
+      privacyLink: "Learn more"
     }
   },
   [Language.FR]: {
@@ -183,6 +190,12 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
           { heading: "Gestion des Cookies", content: "Vous pouvez contrôler et gérer les cookies via les paramètres de votre navigateur." }
         ]
       }
+    },
+    cookieConsent: {
+      message: "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant, vous acceptez notre utilisation des cookies.",
+      accept: "Accepter",
+      decline: "Refuser",
+      privacyLink: "En savoir plus"
     }
   },
   [Language.PT]: {
@@ -275,6 +288,12 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
           { heading: "Gestão de Cookies", content: "Pode controlar e gerir cookies através das definições do seu navegador." }
         ]
       }
+    },
+    cookieConsent: {
+      message: "Utilizamos cookies para garantir a melhor experiência no nosso site. Ao continuar a visitar este site, concorda com a nossa utilização de cookies.",
+      accept: "Aceitar",
+      decline: "Recusar",
+      privacyLink: "Saber mais"
     }
   }
 };
