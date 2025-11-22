@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             {/* Brand */}
             <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col mb-6">
-                <span className="font-bold text-2xl tracking-wider text-white">LABIRINTO</span>
+                <span className="font-bold text-2xl tracking-wider text-white cursor-pointer" onClick={() => window.location.hash = ''}>LABIRINTO</span>
                 <span className="text-xs text-brand-orange tracking-[0.35em] font-semibold">FLORESCENTE</span>
             </div>
             <p className="text-sm leading-relaxed max-w-md mb-6">
@@ -48,9 +48,9 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             <div>
             <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest border-b border-slate-800 pb-2 inline-block">Legal</h4>
             <ul className="space-y-3 text-sm">
-                <li><a href="#" className="hover:text-brand-orange transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-brand-orange transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-brand-orange transition-colors">Cookie Policy</a></li>
+                <li><a href="#privacy-policy" className="hover:text-brand-orange transition-colors">{t.privacy}</a></li>
+                <li><a href="#terms-of-service" className="hover:text-brand-orange transition-colors">{t.terms}</a></li>
+                <li><a href="#cookie-policy" className="hover:text-brand-orange transition-colors">{t.cookies}</a></li>
             </ul>
             </div>
         </div>

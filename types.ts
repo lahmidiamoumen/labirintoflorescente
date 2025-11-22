@@ -9,6 +9,18 @@ export interface ServiceContent {
   description: string;
 }
 
+export interface LegalSection {
+  heading: string;
+  content: string;
+}
+
+export interface LegalPageContent {
+  title: string;
+  lastUpdated: string;
+  intro: string;
+  sections: LegalSection[];
+}
+
 export interface TranslationContent {
   nav: {
     home: string;
@@ -52,5 +64,13 @@ export interface TranslationContent {
   };
   footer: {
     rights: string;
+    privacy: string;
+    terms: string;
+    cookies: string;
+  };
+  legal: {
+    privacy: LegalPageContent;
+    terms: LegalPageContent;
+    cookies: LegalPageContent;
   };
 }
