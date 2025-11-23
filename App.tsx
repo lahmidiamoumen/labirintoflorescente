@@ -10,6 +10,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
 import CookieConsent from './components/CookieConsent';
+import TryWithAI from './components/TryWithAI';
 import { Language } from './types';
 import { TRANSLATIONS } from './constants';
 
@@ -95,6 +96,8 @@ const App: React.FC = () => {
         return <TermsOfService language={language} />;
       case '#cookie-policy':
         return <CookiePolicy language={language} />;
+      case '#try-ai':
+        return <TryWithAI language={language} />;
       default:
         return (
           <>

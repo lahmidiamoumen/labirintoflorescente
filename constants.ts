@@ -12,6 +12,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       about: "About",
       services: "Solutions",
       contact: "Contact",
+      tryAi: "Try AI Beta",
     },
     hero: {
       headline: "Advanced Environmental Containment Solutions",
@@ -102,6 +103,32 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       accept: "Accept",
       decline: "Decline",
       privacyLink: "Learn more"
+    },
+    aiFeature: {
+      title: "Visualize Your Containment",
+      subtitle: "Upload a photo of your building to see how our thermo-retractable containment solutions will look.",
+      dropzone: {
+        drag: "Drag and drop your image here",
+        or: "or",
+        browse: "Browse Files",
+        support: "Supports JPG, PNG (Max 5MB)"
+      },
+      processing: {
+        title: "Analyzing Structure...",
+        step1: "Scanning building geometry...",
+        step2: "Applying virtual shrink wrap...",
+        step3: "Finalizing render..."
+      },
+      result: {
+        before: "Original Photo",
+        after: "With Containment",
+        regenerate: "Try Another Image",
+        disclaimer: "This is an AI-generated simulation for visualization purposes only. Actual results may vary."
+      },
+      error: {
+        title: "Generation Failed",
+        desc: "We couldn't process this image. Please try a clearer photo or a different angle."
+      }
     }
   },
   [Language.FR]: {
@@ -114,6 +141,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       about: "À propos",
       services: "Solutions",
       contact: "Contact",
+      tryAi: "Essai IA Bêta",
     },
     hero: {
       headline: "Solutions Avancées de Confinement Environnemental",
@@ -204,6 +232,32 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       accept: "Accepter",
       decline: "Refuser",
       privacyLink: "En savoir plus"
+    },
+    aiFeature: {
+      title: "Visualisez Votre Confinement",
+      subtitle: "Téléchargez une photo de votre bâtiment pour voir le rendu de nos solutions de confinement thermorétractable.",
+      dropzone: {
+        drag: "Glissez et déposez votre image ici",
+        or: "ou",
+        browse: "Parcourir les fichiers",
+        support: "Supporte JPG, PNG (Max 5Mo)"
+      },
+      processing: {
+        title: "Analyse de la structure...",
+        step1: "Scan de la géométrie du bâtiment...",
+        step2: "Application du film thermorétractable virtuel...",
+        step3: "Finalisation du rendu..."
+      },
+      result: {
+        before: "Photo Originale",
+        after: "Avec Confinement",
+        regenerate: "Essayer une autre image",
+        disclaimer: "Ceci est une simulation générée par IA à des fins de visualisation uniquement. Les résultats réels peuvent varier."
+      },
+      error: {
+        title: "Échec de la génération",
+        desc: "Nous n'avons pas pu traiter cette image. Veuillez essayer une photo plus claire ou un angle différent."
+      }
     }
   },
   [Language.PT]: {
@@ -216,6 +270,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       about: "Sobre",
       services: "Soluções",
       contact: "Contacto",
+      tryAi: "Testar IA Beta",
     },
     hero: {
       headline: "Soluções Avançadas de Confinamento Ambiental",
@@ -306,6 +361,32 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       accept: "Aceitar",
       decline: "Recusar",
       privacyLink: "Saber mais"
+    },
+    aiFeature: {
+      title: "Visualize o Seu Confinamento",
+      subtitle: "Carregue uma foto do seu edifício para ver como ficarão as nossas soluções de confinamento termorretrátil.",
+      dropzone: {
+        drag: "Arraste e largue a sua imagem aqui",
+        or: "ou",
+        browse: "Explorar Ficheiros",
+        support: "Suporta JPG, PNG (Max 5MB)"
+      },
+      processing: {
+        title: "A Analisar Estrutura...",
+        step1: "A verificar geometria do edifício...",
+        step2: "A aplicar filme termorretrátil virtual...",
+        step3: "A finalizar renderização..."
+      },
+      result: {
+        before: "Foto Original",
+        after: "Com Confinamento",
+        regenerate: "Tentar Outra Imagem",
+        disclaimer: "Esta é uma simulação gerada por IA apenas para fins de visualização. Os resultados reais podem variar."
+      },
+      error: {
+        title: "Falha na Geração",
+        desc: "Não conseguimos processar esta imagem. Por favor, tente uma foto mais clara ou um ângulo diferente."
+      }
     }
   }
 };

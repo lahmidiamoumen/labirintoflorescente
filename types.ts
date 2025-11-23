@@ -22,6 +22,33 @@ export interface LegalPageContent {
   sections: LegalSection[];
 }
 
+export interface AiFeature {
+  title: string;
+  subtitle: string;
+  dropzone: {
+    drag: string;
+    or: string;
+    browse: string;
+    support: string;
+  };
+  processing: {
+    title: string;
+    step1: string;
+    step2: string;
+    step3: string;
+  };
+  result: {
+    before: string;
+    after: string;
+    regenerate: string;
+    disclaimer: string;
+  };
+  error: {
+    title: string;
+    desc: string;
+  };
+}
+
 export interface TranslationContent {
   meta: {
     title: string;
@@ -32,6 +59,7 @@ export interface TranslationContent {
     about: string;
     services: string;
     contact: string;
+    tryAi: string;
   };
   hero: {
     headline: string;
@@ -84,4 +112,5 @@ export interface TranslationContent {
     decline: string;
     privacyLink: string;
   };
+  aiFeature: AiFeature;
 }

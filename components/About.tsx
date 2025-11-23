@@ -25,14 +25,14 @@ const About: React.FC<AboutProps> = ({ language }) => {
             
             {/* Main Image */}
             <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-white relative z-10">
-              {/* Building Wrapped in White Shrink Wrap / Scaffolding */}
+              {/* Royalty-Free Alternative: White Scaffolding/Containment Structure */}
               <img 
-                src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=572,h=689,fit=crop,trim=0;476.5360824742268;965.7218543046358;0/mxBrMLQeW1Uo76nJ/img_0977-A85pEPM60oiKRGLz.jpg" 
-                alt="Large building covered in scaffolding and containment netting" 
+                src="https://images.unsplash.com/photo-1591588582259-e675bd2e6088?q=80&w=1000&auto=format&fit=crop" 
+                alt="Industrial Containment Structure" 
                 loading="lazy"
-                width="572"
-                height="689"
-                className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700 grayscale-[10%] hover:grayscale-0"
+                width="1000"
+                height="1250"
+                className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -42,7 +42,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
               </div>
             </div>
 
-            {/* Secondary Image (New) - Floating Bottom Left */}
+            {/* Secondary Image - Floating Bottom Left */}
             <div className="absolute -bottom-12 -left-4 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 rounded-lg border-4 border-white shadow-xl overflow-hidden hidden sm:block z-20 animate-[fadeIn_1s_ease-out]">
                <img 
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" 

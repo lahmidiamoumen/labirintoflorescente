@@ -16,30 +16,50 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10" }) => {
     >
       <title id="logoTitle">Labirinto Florescente Logo</title>
       
-      {/* Hexagon Container (Containment Zone) */}
+      {/* Isometric Cube (The "Building" / "Containment Unit") */}
+      {/* Top Face */}
       <path 
-        d="M50 5 L93.3 30 V80 L50 105 L6.7 80 V30 Z" 
-        className="stroke-white stroke-[4]"
+        d="M50 5 L90 25 L50 45 L10 25 Z" 
+        className="fill-transparent stroke-white stroke-[3]"
         strokeLinejoin="round"
       />
       
-      {/* Inner Labyrinth (Structural Integrity) */}
+      {/* Right Face */}
       <path 
-        d="M30 45 L30 75 L70 75 M70 75 L70 40" 
-        className="stroke-slate-400 stroke-[5]" 
-        strokeLinecap="square"
+        d="M90 25 V75 L50 95 V45 Z" 
+        className="fill-transparent stroke-slate-300 stroke-[3]"
+        strokeLinejoin="round"
       />
       
-      {/* Fluorescent Safety Accent (Thermo-Shrink Highlight) */}
+      {/* Left Face */}
       <path 
-        d="M93.3 30 L50 5 L6.7 30" 
-        className="stroke-brand-orange stroke-[6]"
+        d="M10 25 V75 L50 95 V45 Z" 
+        className="fill-transparent stroke-slate-300 stroke-[3]"
+        strokeLinejoin="round"
+      />
+
+      {/* "Shrink Wrap" Binding Lines (The Containment) */}
+      <path 
+        d="M10 40 L50 60 L90 40" 
+        className="stroke-white stroke-[2] opacity-60"
+        fill="none"
+      />
+      <path 
+        d="M10 60 L50 80 L90 60" 
+        className="stroke-white stroke-[2] opacity-60"
+        fill="none"
+      />
+
+      {/* The "Florescente" Safety Strap (Orange Highlight) */}
+      <path 
+        d="M50 5 V45 L90 25" 
+        className="stroke-brand-orange stroke-[4]"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       
-      {/* Center Core */}
-      <circle cx="50" cy="55" r="6" className="fill-brand-orange" />
+      {/* Central Anchor Point */}
+      <circle cx="50" cy="45" r="4" className="fill-brand-orange" />
     </svg>
   );
 };
