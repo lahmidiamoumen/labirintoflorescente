@@ -23,6 +23,10 @@ export interface LegalPageContent {
 }
 
 export interface TranslationContent {
+  meta: {
+    title: string;
+    description: string;
+  };
   nav: {
     home: string;
     about: string;

@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 import { Twitter, Linkedin, Facebook } from 'lucide-react';
+import Logo from './Logo';
 
 interface FooterProps {
   language: Language;
@@ -18,9 +20,12 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             
             {/* Brand */}
             <div className="col-span-1 md:col-span-2">
-            <div className="flex flex-col mb-6">
-                <span className="font-bold text-2xl tracking-wider text-white cursor-pointer" onClick={() => window.location.hash = ''}>LABIRINTO</span>
-                <span className="text-xs text-brand-orange tracking-[0.35em] font-semibold">FLORESCENTE</span>
+            <div className="flex items-center gap-3 mb-6 cursor-pointer" onClick={() => window.location.hash = ''}>
+                <Logo className="w-10 h-10" />
+                <div className="flex flex-col">
+                    <span className="font-bold text-2xl tracking-wider text-white">LABIRINTO</span>
+                    <span className="text-xs text-brand-orange tracking-[0.35em] font-semibold">FLORESCENTE</span>
+                </div>
             </div>
             <p className="text-sm leading-relaxed max-w-md mb-6 text-slate-400">
                 Unipessoal Lda. <br/>

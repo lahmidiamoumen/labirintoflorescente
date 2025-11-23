@@ -11,18 +11,26 @@ import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
 import CookieConsent from './components/CookieConsent';
 import { Language } from './types';
+import { TRANSLATIONS } from './constants';
 
 const App: React.FC = () => {
   // Function to detect initial language based on localStorage or Browser Settings
+  // SSR Guard: Check if window/localStorage exists before access
   const getInitialLanguage = (): Language => {
+    if (typeof window === 'undefined') return Language.EN;
+
     // 1. Check Local Storage (User preference persistence)
-    const savedLang = localStorage.getItem('app-language') as Language;
-    if (savedLang && Object.values(Language).includes(savedLang)) {
-      return savedLang;
+    try {
+      const savedLang = localStorage.getItem('app-language') as Language;
+      if (savedLang && Object.values(Language).includes(savedLang)) {
+        return savedLang;
+      }
+    } catch (e) {
+      // Ignore error in restricted environments
     }
 
     // 2. Check Browser Language (Auto-detection)
-    if (typeof navigator !== 'undefined' && navigator.language) {
+    if (navigator && navigator.language) {
       const browserLang = navigator.language.toLowerCase();
       if (browserLang.startsWith('pt')) {
         return Language.PT;
@@ -37,13 +45,38 @@ const App: React.FC = () => {
   };
 
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
-  const [currentRoute, setCurrentRoute] = useState(window.location.hash);
+  const [currentRoute, setCurrentRoute] = useState(typeof window !== 'undefined' ? window.location.hash : '');
 
-  // Persist language choice when changed
+  // Persist language choice when changed and update SEO tags
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('app-language', lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('app-language', lang);
+    }
   };
+
+  // Dynamic SEO: Update Title and Meta Description when language changes
+  useEffect(() => {
+    const t = TRANSLATIONS[language];
+    document.title = t.meta.title;
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', t.meta.description);
+    }
+    
+    // Update OpenGraph Title/Desc
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', t.meta.title);
+    
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', t.meta.description);
+
+    // Set language attribute on html tag
+    document.documentElement.lang = language.toLowerCase();
+
+  }, [language]);
 
   useEffect(() => {
     const handleHashChange = () => {

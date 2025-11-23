@@ -3,6 +3,10 @@ import { Language, TranslationContent } from './types';
 
 export const TRANSLATIONS: Record<Language, TranslationContent> = {
   [Language.EN]: {
+    meta: {
+      title: "Labirinto Florescente | Heat Shrink Containment & Asbestos Removal",
+      description: "European leaders in thermo-retractable containment, asbestos decontamination, and industrial safety netting. Expert solutions in Portugal & France."
+    },
     nav: {
       home: "Home",
       about: "About",
@@ -101,6 +105,10 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
     }
   },
   [Language.FR]: {
+    meta: {
+      title: "Labirinto Florescente | Confinement Thermorétractable & Désamiantage",
+      description: "Leader européen du confinement thermorétractable, désamiantage et filets de sécurité. Solutions expertes en France et au Portugal."
+    },
     nav: {
       home: "Accueil",
       about: "À propos",
@@ -199,6 +207,10 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
     }
   },
   [Language.PT]: {
+    meta: {
+      title: "Labirinto Florescente | Confinamento Termorretrátil & Descontaminação",
+      description: "Líderes europeus em confinamento termorretrátil, descontaminação de amianto e redes de segurança industrial. Soluções especializadas em Portugal e França."
+    },
     nav: {
       home: "Início",
       about: "Sobre",
@@ -275,7 +287,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
         sections: [
           { heading: "Serviços", content: "A Labirinto Florescente fornece serviços de construção e confinamento especializados. Todos os serviços estão sujeitos a um contrato escrito separado." },
           { heading: "Propriedade Intelectual", content: "Todo o conteúdo deste site, incluindo texto, gráficos e logótipos, é propriedade da Labirinto Florescente." },
-          { heading: "Limitação de Responsabilidade", content: "A Labirinto Florescente não será responsável por quaisquer danos indiretos decorrentes da utilização do nosso site." }
+          { heading: "Limitation de Responsabilidade", content: "A Labirinto Florescente não será responsável por quaisquer danos indiretos decorrentes da utilização do nosso site." }
         ]
       },
       cookies: {

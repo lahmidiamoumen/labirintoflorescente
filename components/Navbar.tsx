@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
+import Logo from './Logo';
 
 interface NavbarProps {
   language: Language;
@@ -38,8 +39,9 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo */}
+          {/* Logo Section */}
           <div className="flex-shrink-0 group cursor-pointer flex items-center gap-3" onClick={() => window.scrollTo(0,0)}>
+            <Logo className="w-10 h-10 sm:w-12 sm:h-12 text-white transition-transform group-hover:scale-105 duration-300" />
             <div className="flex flex-col leading-none">
               <span className="font-bold text-lg sm:text-xl md:text-2xl tracking-wider text-white group-hover:text-slate-200 transition-colors">
                 LABIRINTO

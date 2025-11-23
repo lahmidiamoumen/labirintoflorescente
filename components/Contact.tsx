@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -12,6 +13,7 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
   const services = TRANSLATIONS[language].services.items;
   
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,6 +34,10 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
   const handleQuoteRequest = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Show toast notification
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 5000);
+
     const subject = `Quote Request: ${formData.service || 'General Inquiry'} - ${formData.name}`;
     const body = `
 Name: ${formData.name}
@@ -104,7 +110,7 @@ ${formData.message}
           </div>
 
           {/* Request Quote Form */}
-          <div className="lg:col-span-3 bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl text-gray-900 border-t-8 border-brand-orange">
+          <div className="lg:col-span-3 bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl text-gray-900 border-t-8 border-brand-orange relative">
             <div className="mb-8">
                 <h4 className="text-xl sm:text-2xl font-bold text-brand-dark">
                   {language === Language.PT ? "Pedir Orçamento" : language === Language.FR ? "Demander un Devis" : "Request a Quote"}
@@ -203,6 +209,22 @@ ${formData.message}
                 <Send className="ml-2 h-5 w-5" />
               </button>
             </form>
+
+             {/* Toast Notification */}
+             {showToast && (
+                <div className="absolute inset-x-0 bottom-0 mb-4 flex justify-center z-20 animate-[slideUp_0.3s_ease-out]">
+                    <div className="bg-brand-dark text-white px-6 py-3 rounded-full shadow-xl flex items-center space-x-3 border border-brand-orange/50">
+                        <CheckCircle className="text-brand-orange h-5 w-5" />
+                        <span className="font-medium text-sm">
+                            {language === Language.PT 
+                                ? "A abrir o seu cliente de email..." 
+                                : language === Language.FR 
+                                ? "Ouverture de votre client de messagerie..." 
+                                : "Opening your email client..."}
+                        </span>
+                    </div>
+                </div>
+             )}
           </div>
 
         </div>
