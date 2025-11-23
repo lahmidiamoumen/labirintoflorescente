@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Upload, X, Loader2, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
-import { GoogleGenAI } from "@google/genai";
 
 interface TryWithAIProps {
   language: Language;
@@ -89,59 +88,33 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
     setError(null);
     
     try {
-      if (!process.env.NEXT_PUBLIC_API_KEY) {
-        throw new Error("API Key is missing in environment variables.");
+      // Extract clean base64 string and mime type
+      const parts = imageBase64.split(';');
+      const mimeType = parts[0].split(':')[1];
+      const base64Data = parts[1].split(',')[1];
+
+      // Call our secure server-side API route
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          image: base64Data,
+          mimeType: mimeType
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to generate image");
       }
 
-      // Extract clean base64 string (remove data:image/xxx;base64, prefix)
-      const base64Data = imageBase64.split(',')[1];
-      const mimeType = imageBase64.split(';')[0].split(':')[1];
-
-      const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_API_KEY });
-      
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-image',
-        contents: {
-            parts: [
-            {
-                inlineData: {
-                data: base64Data,
-                mimeType: mimeType
-                }
-            },
-            {
-                text: "Visualize this building completely wrapped in white heavy-duty confinement tarps for asbestos removal (désamiantage). The entire structure should be covered in tight white industrial shrink wrap film. Maintain the original angle and perspective. Photorealistic construction site style."
-            }
-            ]
-        }
-       });
-
-       // Iterate through parts to find the image
-       let foundImage = false;
-       let textFeedback = "";
-
-       if (response.candidates && response.candidates[0].content && response.candidates[0].content.parts) {
-            for (const part of response.candidates[0].content.parts) {
-                if (part.inlineData) {
-                    const resultBase64 = part.inlineData.data;
-                    // Usually the model returns raw bytes, we assume PNG unless specified
-                    setGeneratedImage(`data:image/png;base64,${resultBase64}`);
-                    foundImage = true;
-                    break;
-                } else if (part.text) {
-                    textFeedback += part.text;
-                }
-            }
-       }
-       
-       if (!foundImage) {
-           console.warn("Model returned text instead of image:", textFeedback);
-           throw new Error(textFeedback || "No image generated.");
-       }
+      setGeneratedImage(data.image);
 
     } catch (err: any) {
       console.error("AI Generation Error:", err);
-      // Show the actual error message if available, otherwise show generic
       setError(err.message || t.error.desc);
     } finally {
       setIsLoading(false);
