@@ -89,7 +89,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
     setError(null);
     
     try {
-      if (!process.env.API_KEY) {
+      if (!process.env.NEXT_PUBLIC_API_KEY) {
         throw new Error("API Key is missing in environment variables.");
       }
 
@@ -97,7 +97,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
       const base64Data = imageBase64.split(',')[1];
       const mimeType = imageBase64.split(';')[0].split(':')[1];
 
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_API_KEY });
       
       const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash-image',
