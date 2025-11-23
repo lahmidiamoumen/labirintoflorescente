@@ -106,7 +106,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
                 }
             },
             {
-                text: "Edit this image to show the entire building wrapped in white heavy-duty industrial heat-shrink plastic containment (thermo-retractable film) for asbestos removal. The look should be photorealistic, showing the white plastic sheeting tightly covering the structure with visible scaffolding underneath or supporting it. Keep the sky and surroundings realistic."
+                text: "Photorealistic architectural shot of a building completely wrapped in white heavy-duty confinement tarps for asbestos removal (désamiantage). construction site atmosphere, high detail, 8k resolution."
             }
             ]
         }
