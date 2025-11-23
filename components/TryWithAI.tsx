@@ -89,6 +89,10 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
     setError(null);
     
     try {
+      if (!process.env.API_KEY) {
+        throw new Error("API Key is missing in environment variables.");
+      }
+
       // Extract clean base64 string (remove data:image/xxx;base64, prefix)
       const base64Data = imageBase64.split(',')[1];
       const mimeType = imageBase64.split(';')[0].split(':')[1];
@@ -106,7 +110,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
                 }
             },
             {
-                text: "Photorealistic architectural shot of a building completely wrapped in white heavy-duty confinement tarps for asbestos removal (désamiantage). construction site atmosphere, high detail, 8k resolution."
+                text: "Visualize this building completely wrapped in white heavy-duty confinement tarps for asbestos removal (désamiantage). The entire structure should be covered in tight white industrial shrink wrap film. Maintain the original angle and perspective. Photorealistic construction site style."
             }
             ]
         }
@@ -114,6 +118,8 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
 
        // Iterate through parts to find the image
        let foundImage = false;
+       let textFeedback = "";
+
        if (response.candidates && response.candidates[0].content && response.candidates[0].content.parts) {
             for (const part of response.candidates[0].content.parts) {
                 if (part.inlineData) {
@@ -122,17 +128,21 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
                     setGeneratedImage(`data:image/png;base64,${resultBase64}`);
                     foundImage = true;
                     break;
+                } else if (part.text) {
+                    textFeedback += part.text;
                 }
             }
        }
        
        if (!foundImage) {
-           throw new Error("No image generated.");
+           console.warn("Model returned text instead of image:", textFeedback);
+           throw new Error(textFeedback || "No image generated.");
        }
 
-    } catch (err) {
+    } catch (err: any) {
       console.error("AI Generation Error:", err);
-      setError(t.error.desc);
+      // Show the actual error message if available, otherwise show generic
+      setError(err.message || t.error.desc);
     } finally {
       setIsLoading(false);
     }
