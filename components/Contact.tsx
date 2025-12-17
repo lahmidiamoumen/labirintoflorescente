@@ -19,7 +19,7 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
     {
       name: "Nabil",
       region: language === Language.FR ? "France et Suisse" : language === Language.PT ? "França e Suíça" : "France & Switzerland",
-      phone: "+33 7 53 95 00 72",
+      phone: "+33 638 051 006",
       icon: <Globe2 className="w-5 h-5" />,
       tag: "Commercial"
     },

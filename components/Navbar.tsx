@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
       
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-[100] flex flex-col p-8 animate-fade-in">
+        <div className="md:hidden fixed inset-0 bg-white z-[100] flex flex-col p-8 animate-fade-in overflow-y-auto">
           <div className="flex justify-between items-center mb-12">
             <div className="flex items-center gap-3">
               <Logo className="w-12 h-12" />
@@ -90,7 +90,36 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
             <a href="#home" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.home}</a>
             <a href="#about" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.about}</a>
             <a href="#services" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.services}</a>
-            <a href="#try-ai" onClick={toggleMenu} className="text-2xl font-black text-brand-blue bg-brand-blue/10 py-4 rounded-2xl">{t.tryAi}</a>
+            
+            {/* Language Selector for Mobile */}
+            <div className="flex flex-col items-center gap-4 py-4 border-t border-slate-100 mt-4">
+              <div className="flex items-center gap-2 text-slate-400 uppercase text-xs font-black tracking-widest mb-2">
+                <Globe size={16} className="text-brand-blue" />
+                Language
+              </div>
+              <div className="flex gap-4">
+                {Object.values(Language).map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => {
+                      setLanguage(lang);
+                    }}
+                    className={`px-6 py-3 rounded-2xl text-xl font-black transition-all ${
+                      language === lang 
+                        ? 'bg-brand-blue text-white shadow-xl shadow-brand-blue/30 scale-110' 
+                        : 'bg-slate-100 text-slate-400'
+                    }`}
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <a href="#try-ai" onClick={toggleMenu} className="text-2xl font-black text-brand-blue bg-brand-blue/10 py-4 rounded-2xl flex items-center justify-center gap-3">
+              <Sparkles className="w-6 h-6" />
+              {t.tryAi}
+            </a>
             <a href="#contact" onClick={toggleMenu} className="bg-brand-orange text-white py-5 rounded-2xl text-2xl font-black shadow-lg shadow-brand-orange/30">{t.contact}</a>
           </div>
         </div>
