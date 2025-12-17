@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { ShieldCheck, Award, HardHat, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShieldCheck, Award, HardHat, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -10,6 +10,30 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ language }) => {
   const t = TRANSLATIONS[language].about;
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const images = [
+    {
+      src: "https://images.unsplash.com/photo-1591588582259-e675bd2e6088?q=80&w=1000&auto=format&fit=crop",
+      title: language === Language.FR ? "Confinement Intégral" : language === Language.PT ? "Confinamento Integral" : "Total Containment"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&q=80&w=1000",
+      title: language === Language.FR ? "Structure Industrielle" : language === Language.PT ? "Estrutura Industrial" : "Industrial Structure"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000",
+      title: language === Language.FR ? "Sécurité Avancée" : language === Language.PT ? "Segurança Avançada" : "Advanced Safety"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
     <section id="about" className="py-16 sm:py-16 lg:py-32 bg-white relative overflow-hidden">
@@ -19,40 +43,54 @@ const About: React.FC<AboutProps> = ({ language }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
           
-          {/* Image Grid */}
+          {/* Image Carousel */}
           <div className="relative mb-20 lg:mb-0 group">
             <div className="absolute -inset-4 bg-brand-orange/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             
-            {/* Main Image */}
-            <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-white relative z-10">
-              {/* Royalty-Free Alternative: White Scaffolding/Containment Structure */}
-              <img 
-                src="https://images.unsplash.com/photo-1591588582259-e675bd2e6088?q=80&w=1000&auto=format&fit=crop" 
-                alt="Industrial Containment Structure" 
-                loading="lazy"
-                width="1000"
-                height="1250"
-                className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <p className="font-bold text-lg border-l-4 border-brand-orange pl-3 drop-shadow-md">
-                  {language === Language.FR ? "Confinement Intégral" : language === Language.PT ? "Confinamento Integral" : "Total Containment"}
-                </p>
-              </div>
+            {/* Main Image Container */}
+            <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-white relative z-10 bg-slate-100">
+               {images.map((img, index) => (
+                 <div 
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                 >
+                    <img 
+                        src={img.src} 
+                        alt={img.title}
+                        loading="lazy"
+                        className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+                    <div className="absolute bottom-6 left-6 right-6 text-white">
+                        <p className="font-bold text-lg border-l-4 border-brand-orange pl-3 drop-shadow-md animate-fade-in">
+                        {img.title}
+                        </p>
+                    </div>
+                 </div>
+               ))}
+
+               {/* Carousel Navigation */}
+               <div className="absolute bottom-6 right-6 z-20 flex space-x-2">
+                  <button onClick={prevSlide} className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors text-white border border-white/50" aria-label="Previous">
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button onClick={nextSlide} className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors text-white border border-white/50" aria-label="Next">
+                    <ChevronRight size={20} />
+                  </button>
+               </div>
             </div>
 
-            {/* Secondary Image - Floating Bottom Left */}
+            {/* Secondary Image - Floating Bottom Left (Static) */}
             <div className="absolute -bottom-12 -left-4 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 rounded-lg border-4 border-white shadow-xl overflow-hidden hidden sm:block z-20 animate-[fadeIn_1s_ease-out]">
                <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" 
+                src="https://plus.unsplash.com/premium_photo-1661877303180-1d85c880155d?auto=format&fit=crop&q=80&w=1000" 
                 alt="Industrial safety detail" 
                 loading="lazy"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
               />
             </div>
 
-            {/* Floating Info Card - Floating Bottom Right */}
+            {/* Floating Info Card */}
             <div className="absolute -bottom-8 -right-4 md:-right-10 bg-brand-dark p-6 sm:p-8 rounded-lg shadow-xl hidden lg:block max-w-xs border-t-4 border-brand-orange z-30">
               <div className="flex items-center mb-3">
                 <HardHat className="text-brand-orange h-6 w-6 mr-3" />

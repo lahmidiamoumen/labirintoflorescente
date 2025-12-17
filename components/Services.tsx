@@ -1,6 +1,7 @@
-import React from 'react';
+
+import React, { useRef, useState } from 'react';
 import { Box, Home, HardHat, Biohazard, ArrowRight } from 'lucide-react';
-import { Language } from '../types';
+import { Language, ServiceContent } from '../types';
 import { TRANSLATIONS } from '../constants';
 
 interface ServicesProps {
@@ -13,85 +14,107 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
   const serviceList = [
     {
       id: 'containment',
-      icon: <Box className="h-8 w-8 sm:h-10 sm:w-10 text-white" />,
+      icon: <Box className="h-10 w-10 text-white" />,
       content: t.items.containment,
-      gradient: 'from-blue-500 to-blue-700',
-      delay: '0'
+      gradient: 'from-blue-500 to-sky-400',
     },
     {
       id: 'roofing',
-      icon: <HardHat className="h-8 w-8 sm:h-10 sm:w-10 text-white" />,
+      icon: <HardHat className="h-10 w-10 text-white" />,
       content: t.items.roofing,
-      gradient: 'from-orange-500 to-orange-700',
-      delay: '100'
+      gradient: 'from-orange-500 to-amber-400',
     },
     {
       id: 'indoorOutdoor',
-      icon: <Home className="h-8 w-8 sm:h-10 sm:w-10 text-white" />,
+      icon: <Home className="h-10 w-10 text-white" />,
       content: t.items.indoorOutdoor,
-      gradient: 'from-slate-600 to-slate-800',
-      delay: '200'
+      gradient: 'from-slate-700 to-slate-500',
     },
     {
       id: 'decontamination',
-      icon: <Biohazard className="h-8 w-8 sm:h-10 sm:w-10 text-white" />,
+      icon: <Biohazard className="h-10 w-10 text-white" />,
       content: t.items.decontamination,
-      gradient: 'from-red-600 to-red-800',
-      delay: '300'
+      gradient: 'from-emerald-600 to-teal-400',
     }
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 lg:py-32 bg-slate-50 border-t border-slate-200">
+    <section id="services" className="py-24 lg:py-32 bg-slate-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-brand-blue font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">
-            Technical Expertise
+        <div className="text-center mb-20">
+          <h2 className="text-brand-blue font-extrabold tracking-widest uppercase text-sm mb-4">
+            Technical Precision
           </h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark">
+          <h3 className="text-4xl md:text-6xl font-black text-slate-900 mb-8">
             {t.title}
           </h3>
-          <div className="mt-6 w-24 h-1.5 bg-gradient-to-r from-brand-orange to-brand-orangeDark mx-auto rounded-full"></div>
+          <div className="w-24 h-2 bg-brand-orange mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceList.map((service) => (
-            <div 
-              key={service.id} 
-              className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden flex flex-col h-full border border-slate-100"
-            >
-              {/* Top Gradient Bar */}
-              <div className={`h-2 w-full bg-gradient-to-r ${service.gradient}`}></div>
-              
-              {/* Icon Container */}
-              <div className={`p-6 sm:p-8 pb-0`}>
-                 <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-0`}>
-                    {service.icon}
-                 </div>
-              </div>
-
-              <div className="p-6 sm:p-8 flex-grow">
-                <h4 className="text-xl sm:text-2xl font-bold text-brand-dark mb-3 sm:mb-4 group-hover:text-brand-orange transition-colors">
-                  {service.content.title}
-                </h4>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {service.content.description}
-                </p>
-              </div>
-
-              <div className="px-6 sm:px-8 pb-6 sm:pb-8 mt-auto">
-                 <div className="w-full h-px bg-slate-100 mb-4 sm:mb-6"></div>
-                 <a href="#contact" className="inline-flex items-center text-sm font-bold text-brand-dark group-hover:text-brand-orange transition-colors uppercase tracking-wide">
-                    {language === Language.PT ? "Solicitar" : "Request"}
-                    <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-2 transition-transform" />
-                 </a>
-              </div>
-            </div>
+             <ServiceCard key={service.id} service={service} language={language} />
           ))}
         </div>
       </div>
     </section>
   );
 };
+
+interface ServiceCardProps {
+    service: {
+        id: string;
+        icon: React.ReactNode;
+        content: ServiceContent;
+        gradient: string;
+    };
+    language: Language;
+}
+
+// Fix: Use React.FC to handle standard component props like 'key' and children
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, language }) => {
+    const divRef = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!divRef.current) return;
+        const rect = divRef.current.getBoundingClientRect();
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
+
+    return (
+        <div 
+            ref={divRef}
+            onMouseMove={handleMouseMove}
+            className="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden flex flex-col h-full"
+        >
+            {/* White-themed spotlight */}
+            <div 
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 z-10"
+                style={{
+                    background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(14,165,233,0.05), transparent 70%)`
+                }}
+            />
+
+            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg mb-8 relative z-20 transition-transform group-hover:scale-110`}>
+                {service.icon}
+            </div>
+
+            <h4 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-blue transition-colors relative z-20">
+                {service.content.title}
+            </h4>
+            <p className="text-slate-500 text-base leading-relaxed mb-8 relative z-20">
+                {service.content.description}
+            </p>
+
+            <div className="mt-auto relative z-20">
+                <a href="#contact" className="inline-flex items-center text-sm font-black text-slate-900 group-hover:text-brand-orange transition-colors uppercase tracking-widest">
+                    {language === Language.PT ? "Saber Mais" : "Learn More"}
+                    <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-2 transition-transform" />
+                </a>
+            </div>
+        </div>
+    );
+}
 
 export default Services;

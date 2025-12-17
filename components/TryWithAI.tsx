@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Upload, X, Loader2, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
+import { GoogleGenAI } from "@google/genai";
 
 interface TryWithAIProps {
   language: Language;
@@ -19,6 +20,11 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Loading animation effect
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -30,11 +36,6 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
     }
     return () => clearInterval(interval);
   }, [isLoading]);
-
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -88,30 +89,63 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
     setError(null);
     
     try {
-      // Extract clean base64 string and mime type
+      // 1. Get API Key from any available environment variable source
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY || process.env.REACT_APP_API_KEY || process.env.API_KEY;
+
+      if (!apiKey) {
+        throw new Error("API Key not found. Please check your .env file.");
+      }
+
+      // 2. Initialize Client
+      const ai = new GoogleGenAI({ apiKey });
+
+      // 3. Extract clean base64 string and mime type
       const parts = imageBase64.split(';');
       const mimeType = parts[0].split(':')[1];
       const base64Data = parts[1].split(',')[1];
 
-      // Call our secure server-side API route
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          image: base64Data,
-          mimeType: mimeType
-        }),
+      // 4. Construct Prompt
+      const prompt = "Visualize this building completely wrapped in white heavy-duty confinement tarps for asbestos removal (désamiantage). The entire structure should be covered in tight white industrial shrink wrap film. Maintain the original angle and perspective. Photorealistic construction site style.";
+
+      // 5. Call API
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: {
+          parts: [
+            {
+              inlineData: {
+                data: base64Data,
+                mimeType: mimeType || 'image/jpeg'
+              }
+            },
+            {
+              text: prompt
+            }
+          ]
+        }
       });
 
-      const data = await response.json();
+      // 6. Process Response
+      let resultImage = null;
+      let textFeedback = "";
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to generate image");
+      if (response.candidates && response.candidates[0].content && response.candidates[0].content.parts) {
+        for (const part of response.candidates[0].content.parts) {
+          if (part.inlineData) {
+            const resultBase64 = part.inlineData.data;
+            resultImage = `data:image/png;base64,${resultBase64}`;
+            break;
+          } else if (part.text) {
+            textFeedback += part.text;
+          }
+        }
       }
 
-      setGeneratedImage(data.image);
+      if (!resultImage) {
+        throw new Error(textFeedback || "The AI could not generate an image. Please try a different photo.");
+      }
+
+      setGeneratedImage(resultImage);
 
     } catch (err: any) {
       console.error("AI Generation Error:", err);
@@ -128,14 +162,14 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
   };
 
   return (
-    <div className="bg-brand-darker min-h-screen pt-24 pb-16 text-white relative overflow-hidden">
+    <div className="bg-brand-darker min-h-screen pt-24 pb-16 text-white relative overflow-hidden border-t border-slate-800">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_70%)] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-brand-blue/30 bg-brand-blue/10 text-brand-blue text-xs font-bold tracking-widest uppercase mb-4">
             <Sparkles className="w-3 h-3 mr-2" />
             Beta Feature
@@ -151,7 +185,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
         {/* Main Interface */}
         {!selectedImage && (
           <div 
-            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all duration-300 ${
+            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all duration-300 animate-slide-up ${
               isDragging 
                 ? 'border-brand-blue bg-brand-blue/5 scale-[1.02]' 
                 : 'border-slate-700 bg-slate-800/50 hover:border-slate-500'
@@ -184,7 +218,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
 
         {/* Loading State */}
         {isLoading && (
-            <div className="flex flex-col items-center justify-center py-20">
+            <div className="flex flex-col items-center justify-center py-20 animate-fade-in">
                 <div className="relative w-24 h-24 mb-8">
                     <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
                     <div className="absolute inset-0 border-4 border-brand-blue rounded-full border-t-transparent animate-spin"></div>
@@ -201,7 +235,7 @@ const TryWithAI: React.FC<TryWithAIProps> = ({ language }) => {
 
         {/* Result View */}
         {selectedImage && !isLoading && (
-            <div className="animate-fadeIn">
+            <div className="animate-fade-in">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     {/* Before */}
                     <div className="bg-slate-800 rounded-xl p-4 border border-slate-700">

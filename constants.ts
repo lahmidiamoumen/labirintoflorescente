@@ -4,7 +4,7 @@ import { Language, TranslationContent } from './types';
 export const TRANSLATIONS: Record<Language, TranslationContent> = {
   [Language.EN]: {
     meta: {
-      title: "Labirinto Florescente | Heat Shrink Containment & Asbestos Removal",
+      title: "Safe Shield | Advanced Containment & Environmental Safety",
       description: "European leaders in thermo-retractable containment, asbestos decontamination, and industrial safety netting. Expert solutions in Portugal & France."
     },
     nav: {
@@ -12,381 +12,213 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
       about: "About",
       services: "Solutions",
       contact: "Contact",
-      tryAi: "Try AI Beta",
+      tryAi: "AI Simulator",
     },
     hero: {
       headline: "Advanced Environmental Containment Solutions",
-      subheadline: "Specialists in Thermo-Retractable Films and Industrial Safety Netting",
-      cta: "Request a Quote",
-      learnMore: "Learn More",
+      subheadline: "Specialists in Thermo-Retractable Films and Industrial Safety Netting for a cleaner future.",
+      cta: "Get a Quote",
+      learnMore: "Our Solutions",
     },
     about: {
-      title: "About Us",
-      companyName: "LABIRINTOFLORESCENTE, UNIPESSOAL LDA",
-      description: "We are a specialized construction firm focused on technical environments. Our expertise lies in securing construction sites and industrial zones through advanced containment technologies.",
-      specialization: "Registered Activity: Specialized construction activities, decontamination, and similar operations.",
+      title: "Clean Industrial Safety",
+      companyName: "SAFE SHIELD UNIPESSOAL LDA",
+      description: "We are a premier construction engineering firm dedicated to environmental safety. We specialize in securing sensitive industrial zones through advanced containment technologies that prevent contamination and ensure structural integrity.",
+      specialization: "Licensed Activity: Specialized technical construction, decontamination, and environmental protection.",
     },
     services: {
-      title: "Technical Solutions",
+      title: "Precision Engineering",
       items: {
         containment: {
-          title: "Heat-Shrink Containment",
-          description: "Premium thermo-retractable films for environmental protection, creating dust-free, weather-resistant, and secure work zones."
+          title: "Heat-Shrink Wrap",
+          description: "Premium eco-friendly films for total site isolation. Creates a weather-tight, dust-free environment perfect for sensitive works."
         },
         indoorOutdoor: {
-          title: "Indoor & Outdoor",
-          description: "Versatile containment structures adaptable to both interior renovations and exterior façade works, ensuring total isolation."
+          title: "Adaptive Structures",
+          description: "Modular containment systems designed for both interior restoration and exterior high-rise façade protection."
         },
         roofing: {
-          title: "Roofing & Safety Nets",
-          description: "Under-roof containment solutions combined with certified personnel safety nets (filet antichute HOMME) for maximum worker safety."
+          title: "Roofing & Netting",
+          description: "Integrated under-roof safety systems combined with high-grade fall protection netting for zero-risk operations."
         },
         decontamination: {
           title: "Decontamination",
-          description: "Specialized protocols and setups for hazardous material removal and site decontamination."
+          description: "Rigorous protocols for hazardous substance removal, ensuring a safe and clean site handover."
         }
       }
     },
     contact: {
-      title: "Get In Touch",
-      subtitle: "Ready to start your project? Our team of experts is here to provide safe and efficient containment solutions.",
+      title: "Start Your Project",
+      subtitle: "Our consultants are ready to design a custom safety and containment plan for your infrastructure.",
       form: {
-        name: "Your Name",
-        email: "Your Email",
-        service: "Service of Interest",
-        servicePlaceholder: "Select a service...",
-        message: "Project Details",
-        submit: "Request Quote",
+        name: "Full Name",
+        email: "Work Email",
+        service: "Technical Solution",
+        servicePlaceholder: "Select technical area...",
+        message: "Project Requirements",
+        submit: "Submit Inquiry",
       },
-      address: "Address",
+      address: "Headquarters",
     },
     footer: {
-      rights: "All rights reserved.",
-      privacy: "Privacy Policy",
-      terms: "Terms of Service",
-      cookies: "Cookie Policy",
+      rights: "Safe Shield. Precision Safety Engineering.",
+      privacy: "Privacy",
+      terms: "Terms",
+      cookies: "Cookies",
     },
     legal: {
-      privacy: {
-        title: "Privacy Policy",
-        lastUpdated: "Last Updated: October 2023",
-        intro: "At Labirinto Florescente, we are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information.",
-        sections: [
-          { heading: "Data Collection", content: "We collect information you provide directly to us, such as when you request a quote, including your name, email address, and phone number." },
-          { heading: "Use of Information", content: "We use the information to respond to your inquiries, provide our specialized containment services, and improve our website functionality." },
-          { heading: "Data Protection", content: "We implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk." }
-        ]
-      },
-      terms: {
-        title: "Terms of Service",
-        lastUpdated: "Last Updated: October 2023",
-        intro: "By accessing our website and services, you agree to be bound by these Terms of Service.",
-        sections: [
-          { heading: "Services", content: "Labirinto Florescente provides specialized construction and containment services. All services are subject to a separate written agreement." },
-          { heading: "Intellectual Property", content: "All content on this website, including text, graphics, and logos, is the property of Labirinto Florescente." },
-          { heading: "Limitation de Liability", content: "Labirinto Florescente shall not be liable for any indirect, incidental, or consequential damages arising out of the use of our website." }
-        ]
-      },
-      cookies: {
-        title: "Cookie Policy",
-        lastUpdated: "Last Updated: October 2023",
-        intro: "We use cookies to enhance your experience on our website.",
-        sections: [
-          { heading: "What are Cookies?", content: "Cookies are small text files stored on your device that help us remember your preferences and analyze site traffic." },
-          { heading: "How We Use Cookies", content: "We use essential cookies for website functionality and analytical cookies to understand how visitors interact with our site." },
-          { heading: "Managing Cookies", content: "You can control and manage cookies through your browser settings." }
-        ]
-      }
+      privacy: { title: "Privacy", lastUpdated: "2024", intro: "Data protection notice.", sections: [] },
+      terms: { title: "Terms", lastUpdated: "2024", intro: "Service terms.", sections: [] },
+      cookies: { title: "Cookies", lastUpdated: "2024", intro: "Cookie usage.", sections: [] }
     },
-    cookieConsent: {
-      message: "We use cookies to ensure you get the best experience on our website. By continuing to visit this site you agree to our use of cookies.",
-      accept: "Accept",
-      decline: "Decline",
-      privacyLink: "Learn more"
-    },
+    cookieConsent: { message: "We use cookies to ensure the best experience.", accept: "Accept", decline: "Decline", privacyLink: "Privacy" },
     aiFeature: {
-      title: "Visualize Your Containment",
-      subtitle: "Upload a photo of your building to see how our thermo-retractable containment solutions will look.",
-      dropzone: {
-        drag: "Drag and drop your image here",
-        or: "or",
-        browse: "Browse Files",
-        support: "Supports JPG, PNG (Max 5MB)"
-      },
-      processing: {
-        title: "Analyzing Structure...",
-        step1: "Scanning building geometry...",
-        step2: "Applying virtual shrink wrap...",
-        step3: "Finalizing render..."
-      },
-      result: {
-        before: "Original Photo",
-        after: "With Containment",
-        regenerate: "Try Another Image",
-        disclaimer: "This is an AI-generated simulation for visualization purposes only. Actual results may vary."
-      },
-      error: {
-        title: "Generation Failed",
-        desc: "We couldn't process this image. Please try a clearer photo or a different angle."
-      }
+      title: "Safe Shield AI",
+      subtitle: "Visualize our containment solution on your structure in seconds.",
+      dropzone: { drag: "Drop project photo", or: "or", browse: "Select File", support: "JPG/PNG up to 10MB" },
+      processing: { title: "Processing...", step1: "Scanning structure...", step2: "Applying virtual wrap...", step3: "Rendering..." },
+      result: { before: "Original", after: "Containment Simulation", regenerate: "New Scan", disclaimer: "AI-generated visualization." },
+      error: { title: "Scan Failed", desc: "Try a clearer image." }
     }
   },
   [Language.FR]: {
     meta: {
-      title: "Labirinto Florescente | Confinement Thermorétractable & Désamiantage",
-      description: "Leader européen du confinement thermorétractable, désamiantage et filets de sécurité. Solutions expertes en France et au Portugal."
+      title: "Safe Shield | Confinement Avancé & Sécurité Environnementale",
+      description: "Leader européen du confinement thermorétractable, désamiantage et filets de sécurité."
     },
     nav: {
       home: "Accueil",
       about: "À propos",
       services: "Solutions",
       contact: "Contact",
-      tryAi: "Essai IA Bêta",
+      tryAi: "Simulateur IA",
     },
     hero: {
-      headline: "Solutions Avancées de Confinement Environnemental",
-      subheadline: "Spécialistes du confinement thermo-rétractable et filets de sécurité",
-      cta: "Demander un Devis",
-      learnMore: "En Savoir Plus",
+      headline: "Solutions de Confinement Environnemental",
+      subheadline: "Spécialistes du film thermo-rétractable et filets de sécurité pour un avenir plus propre.",
+      cta: "Demander Devis",
+      learnMore: "Solutions",
     },
     about: {
-      title: "À Propos",
-      companyName: "LABIRINTOFLORESCENTE, UNIPESSOAL LDA",
-      description: "Entreprise spécialisée dans les environnements techniques du bâtiment. Notre expertise réside dans la sécurisation des chantiers via des technologies de confinement avancées.",
-      specialization: "Objet Social : Autres activités spécialisées de construction diverses, n.e., Descontaminação et activités similaires.",
+      title: "Sécurité Industrielle Propre",
+      companyName: "SAFE SHIELD UNIPESSOAL LDA",
+      description: "Nous sommes une entreprise d'ingénierie de construction dédiée à la sécurité environnementale. Nous sécurisons les zones industrielles sensibles via des technologies avancées.",
+      specialization: "Activité : Travaux de construction spécialisés, décontamination et protection de l'environnement.",
     },
     services: {
-      title: "Nos Solutions Techniques",
+      title: "Ingénierie de Précision",
       items: {
         containment: {
-          title: "Confinement Thermo-Rétractable",
-          description: "Films thermo-rétractables pour la protection de l'environnement, créant des zones de travail étanches et hors poussière."
+          title: "Confinement Thermique",
+          description: "Films premium pour isolation totale du site. Crée un environnement étanche et hors poussière."
         },
         indoorOutdoor: {
-          title: "Intérieur & Extérieur",
-          description: "Structures de confinement adaptables pour rénovations intérieures et travaux de façade extérieurs."
+          title: "Structures Adaptatives",
+          description: "Systèmes de confinement modulaires pour rénovation intérieure et protection de façade extérieure."
         },
         roofing: {
-          title: "Sous-face de Toiture & Filets",
-          description: "Confinement en sous-face de toiture combiné avec la pose de filets antichute HOMME pour la sécurité maximale."
+          title: "Toiture & Filets",
+          description: "Systèmes de sécurité intégrés combinés avec des filets anti-chute pour des opérations sans risque."
         },
         decontamination: {
           title: "Décontamination",
-          description: "Protocoles et installations spécialisés pour l'élimination de matériaux dangereux et décontamination de sites."
+          description: "Protocoles rigoureux pour l'élimination de substances dangereuses."
         }
       }
     },
     contact: {
-      title: "Contactez-nous",
-      subtitle: "Prêt à démarrer votre projet ? Notre équipe d'experts est là pour fournir des solutions de confinement sûres et efficaces.",
+      title: "Démarrer un Projet",
+      subtitle: "Nos consultants sont prêts à concevoir un plan de sécurité sur mesure.",
       form: {
-        name: "Votre Nom",
-        email: "Votre Email",
-        service: "Service Intéressé",
-        servicePlaceholder: "Sélectionnez un service...",
-        message: "Détails du projet",
-        submit: "Demander un Devis",
+        name: "Nom complet",
+        email: "Email professionnel",
+        service: "Solution technique",
+        servicePlaceholder: "Choisir un domaine...",
+        message: "Besoins du projet",
+        submit: "Envoyer",
       },
-      address: "Adresse",
+      address: "Siège social",
     },
-    footer: {
-      rights: "Tous droits réservés.",
-      privacy: "Politique de Confidentialité",
-      terms: "Conditions d'Utilisation",
-      cookies: "Politique des Cookies",
-    },
-    legal: {
-      privacy: {
-        title: "Politique de Confidentialité",
-        lastUpdated: "Dernière mise à jour : Octobre 2023",
-        intro: "Chez Labirinto Florescente, nous nous engageons à protéger vos données personnelles. Cette politique explique comment nous collectons et utilisons vos informations.",
-        sections: [
-          { heading: "Collecte de Données", content: "Nous collectons les informations que vous nous fournissez directement, par exemple lors d'une demande de devis." },
-          { heading: "Utilisation des Informations", content: "Nous utilisons ces informations pour répondre à vos demandes et fournir nos services spécialisés." },
-          { heading: "Protection des Données", content: "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour assurer la sécurité de vos données." }
-        ]
-      },
-      terms: {
-        title: "Conditions d'Utilisation",
-        lastUpdated: "Dernière mise à jour : Octobre 2023",
-        intro: "En accédant à notre site web, vous acceptez d'être lié par ces conditions d'utilisation.",
-        sections: [
-          { heading: "Services", content: "Labirinto Florescente fournit des services de construction spécialisés. Tous les services font l'objet d'un contrat écrit séparé." },
-          { heading: "Propriété Intellectuelle", content: "Tout le contenu de ce site web est la propriété de Labirinto Florescente." },
-          { heading: "Limitation de Responsabilité", content: "Labirinto Florescente ne pourra être tenu responsable des dommages indirects liés à l'utilisation de notre site." }
-        ]
-      },
-      cookies: {
-        title: "Politique des Cookies",
-        lastUpdated: "Dernière mise à jour : Octobre 2023",
-        intro: "Nous utilisons des cookies pour améliorer votre expérience sur notre site.",
-        sections: [
-          { heading: "Qu'est-ce qu'un cookie ?", content: "Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser le trafic du site." },
-          { heading: "Utilisation des Cookies", content: "Nous utilisons des cookies essentiels pour le fonctionnement du site et des cookies analytiques." },
-          { heading: "Gestion des Cookies", content: "Vous pouvez contrôler et gérer les cookies via les paramètres de votre navigateur." }
-        ]
-      }
-    },
-    cookieConsent: {
-      message: "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant, vous acceptez notre utilisation des cookies.",
-      accept: "Accepter",
-      decline: "Refuser",
-      privacyLink: "En savoir plus"
-    },
+    footer: { rights: "Safe Shield. Ingénierie de sécurité.", privacy: "Vie privée", terms: "Conditions", cookies: "Cookies" },
+    legal: { privacy: { title: "Privacy", lastUpdated: "2024", intro: "", sections: [] }, terms: { title: "Terms", lastUpdated: "2024", intro: "", sections: [] }, cookies: { title: "Cookies", lastUpdated: "2024", intro: "", sections: [] } },
+    cookieConsent: { message: "Nous utilisons des cookies.", accept: "Accepter", decline: "Refuser", privacyLink: "Plus d'infos" },
     aiFeature: {
-      title: "Visualisez Votre Confinement",
-      subtitle: "Téléchargez une photo de votre bâtiment pour voir le rendu de nos solutions de confinement thermorétractable.",
-      dropzone: {
-        drag: "Glissez et déposez votre image ici",
-        or: "ou",
-        browse: "Parcourir les fichiers",
-        support: "Supporte JPG, PNG (Max 5Mo)"
-      },
-      processing: {
-        title: "Analyse de la structure...",
-        step1: "Scan de la géométrie du bâtiment...",
-        step2: "Application du film thermorétractable virtuel...",
-        step3: "Finalisation du rendu..."
-      },
-      result: {
-        before: "Photo Originale",
-        after: "Avec Confinement",
-        regenerate: "Essayer une autre image",
-        disclaimer: "Ceci est une simulation générée par IA à des fins de visualisation uniquement. Les résultats réels peuvent varier."
-      },
-      error: {
-        title: "Échec de la génération",
-        desc: "Nous n'avons pas pu traiter cette image. Veuillez essayer une photo plus claire ou un angle différent."
-      }
+      title: "Safe Shield IA",
+      subtitle: "Visualisez notre solution de confinement sur votre structure.",
+      dropzone: { drag: "Déposez une photo", or: "ou", browse: "Parcourir", support: "JPG/PNG max 10Mo" },
+      processing: { title: "Traitement...", step1: "Scan structure...", step2: "Application film...", step3: "Rendu..." },
+      result: { before: "Original", after: "Simulation IA", regenerate: "Nouveau scan", disclaimer: "Simulation générée par IA." },
+      error: { title: "Échec du scan", desc: "Réessayez avec une photo plus claire." }
     }
   },
   [Language.PT]: {
     meta: {
-      title: "Labirinto Florescente | Confinamento Termorretrátil & Descontaminação",
-      description: "Líderes europeus em confinamento termorretrátil, descontaminação de amianto e redes de segurança industrial. Soluções especializadas em Portugal e França."
+      title: "Safe Shield | Confinamento Avançado & Segurança Ambiental",
+      description: "Líderes europeus em confinamento termorretrátil e descontaminação de amianto."
     },
     nav: {
       home: "Início",
       about: "Sobre",
       services: "Soluções",
       contact: "Contacto",
-      tryAi: "Testar IA Beta",
+      tryAi: "Simulador IA",
     },
     hero: {
-      headline: "Soluções Avançadas de Confinamento Ambiental",
-      subheadline: "Especialistas em filmes termorretráteis e redes de segurança industrial",
+      headline: "Soluções de Confinamento Ambiental",
+      subheadline: "Especialistas em filmes termorretráteis e redes de segurança industrial para um futuro limpo.",
       cta: "Pedir Orçamento",
-      learnMore: "Saber Mais",
+      learnMore: "Soluções",
     },
     about: {
-      title: "Sobre Nós",
-      companyName: "LABIRINTOFLORESCENTE, UNIPESSOAL LDA",
-      description: "Somos uma empresa especializada em construção técnica. A nossa especialidade é proteger estaleiros e zonas industriais através de tecnologias de confinamento avançadas.",
-      specialization: "Objeto Social: Outras actividades especializadas de construção diversas, n.e., Descontaminação e actividades similares.",
+      title: "Segurança Industrial Limpa",
+      companyName: "SAFE SHIELD UNIPESSOAL LDA",
+      description: "Somos uma empresa de engenharia dedicada à segurança ambiental. Especializamo-nos em proteger zonas industriais através de tecnologias de confinamento avançadas.",
+      specialization: "Objeto Social: Outras atividades especializadas de construção, descontaminação e proteção ambiental.",
     },
     services: {
-      title: "Soluções Técnicas",
+      title: "Engenharia de Precisão",
       items: {
         containment: {
-          title: "Confinamento Termorretrátil",
-          description: "Filmes termorretráteis premium para proteção ambiental, criando zonas de trabalho estanques, livres de poeira e seguras."
+          title: "Confinamento Térmico",
+          description: "Filmes premium para isolamento total do estaleiro. Cria um ambiente estanque e livre de poeiras."
         },
         indoorOutdoor: {
-          title: "Interior & Exterior",
-          description: "Estruturas de confinamento versáteis adaptáveis a renovações interiores e trabalhos de fachada exterior."
+          title: "Estruturas Adaptativas",
+          description: "Sistemas de confinamento modulares para renovação interior e proteção de fachadas exteriores."
         },
         roofing: {
           title: "Coberturas e Redes",
-          description: "Soluções de confinamento sob o telhado combinadas com redes de segurança certificadas (filet antichute HOMME) para máxima segurança."
+          description: "Sistemas de segurança integrados combinados com redes anti-queda para operações de risco zero."
         },
         decontamination: {
           title: "Descontaminação",
-          description: "Protocolos e instalações especializadas para a remoção de materiais perigosos e descontaminação de locais."
+          description: "Protocolos rigorosos para remoção de substâncias perigosas."
         }
       }
     },
     contact: {
-      title: "Contacte-nos",
-      subtitle: "Pronto para iniciar o seu projeto? A nossa equipa de especialistas está aqui para fornecer soluções de confinamento seguras e eficientes.",
+      title: "Iniciar Projeto",
+      subtitle: "Os nossos consultores estão prontos para desenhar um plano de segurança à medida.",
       form: {
-        name: "O Seu Nome",
-        email: "O Seu Email",
-        service: "Serviço de Interesse",
-        servicePlaceholder: "Selecione um serviço...",
+        name: "Nome Completo",
+        email: "Email Profissional",
+        service: "Solução Técnica",
+        servicePlaceholder: "Selecione a área...",
         message: "Detalhes do Projeto",
-        submit: "Pedir Orçamento",
+        submit: "Enviar Pedido",
       },
-      address: "Morada",
+      address: "Sede",
     },
-    footer: {
-      rights: "Todos os direitos reservados.",
-      privacy: "Política de Privacidade",
-      terms: "Termos de Serviço",
-      cookies: "Política de Cookies",
-    },
-    legal: {
-      privacy: {
-        title: "Política de Privacidade",
-        lastUpdated: "Última atualização: Outubro 2023",
-        intro: "Na Labirinto Florescente, estamos comprometidos em proteger os seus dados pessoais. Esta política explica como recolhemos e utilizamos as suas informações.",
-        sections: [
-          { heading: "Recolha de Dados", content: "Recolhemos informações que nos fornece diretamente, como quando solicita um orçamento, incluindo o seu nome, email e número de telefone." },
-          { heading: "Uso de Informações", content: "Utilizamos as informações para responder às suas questões, fornecer os nossos serviços especializados e melhorar a funcionalidade do site." },
-          { heading: "Proteção de Dados", content: "Implementamos medidas técnicas e organizacionais adequadas para garantir um nível de segurança apropriado ao risco." }
-        ]
-      },
-      terms: {
-        title: "Termos de Serviço",
-        lastUpdated: "Última atualização: Outubro 2023",
-        intro: "Ao aceder ao nosso site e serviços, concorda em ficar vinculado a estes Termos de Serviço.",
-        sections: [
-          { heading: "Serviços", content: "A Labirinto Florescente fornece serviços de construção e confinamento especializados. Todos os serviços estão sujeitos a um contrato escrito separado." },
-          { heading: "Propriedade Intelectual", content: "Todo o conteúdo deste site, incluindo texto, gráficos e logótipos, é propriedade da Labirinto Florescente." },
-          { heading: "Limitation de Responsabilidade", content: "A Labirinto Florescente não será responsável por quaisquer danos indiretos decorrentes da utilização do nosso site." }
-        ]
-      },
-      cookies: {
-        title: "Política de Cookies",
-        lastUpdated: "Última atualização: Outubro 2023",
-        intro: "Utilizamos cookies para melhorar a sua experiência no nosso site.",
-        sections: [
-          { heading: "O que são Cookies?", content: "Cookies são pequenos ficheiros de texto armazenados no seu dispositivo que nos ajudam a lembrar as suas preferências." },
-          { heading: "Como Usamos Cookies", content: "Utilizamos cookies essenciais para a funcionalidade do site e cookies analíticos para entender como os visitantes interagem com o nosso site." },
-          { heading: "Gestão de Cookies", content: "Pode controlar e gerir cookies através das definições do seu navegador." }
-        ]
-      }
-    },
-    cookieConsent: {
-      message: "Utilizamos cookies para garantir a melhor experiência no nosso site. Ao continuar a visitar este site, concorda com a nossa utilização de cookies.",
-      accept: "Aceitar",
-      decline: "Recusar",
-      privacyLink: "Saber mais"
-    },
+    footer: { rights: "Safe Shield. Engenharia de Segurança.", privacy: "Privacidade", terms: "Termos", cookies: "Cookies" },
+    legal: { privacy: { title: "Privacidade", lastUpdated: "2024", intro: "", sections: [] }, terms: { title: "Termos", lastUpdated: "2024", intro: "", sections: [] }, cookies: { title: "Cookies", lastUpdated: "2024", intro: "", sections: [] } },
+    cookieConsent: { message: "Utilizamos cookies.", accept: "Aceitar", decline: "Recusar", privacyLink: "Saber mais" },
     aiFeature: {
-      title: "Visualize o Seu Confinamento",
-      subtitle: "Carregue uma foto do seu edifício para ver como ficarão as nossas soluções de confinamento termorretrátil.",
-      dropzone: {
-        drag: "Arraste e largue a sua imagem aqui",
-        or: "ou",
-        browse: "Explorar Ficheiros",
-        support: "Suporta JPG, PNG (Max 5MB)"
-      },
-      processing: {
-        title: "A Analisar Estrutura...",
-        step1: "A verificar geometria do edifício...",
-        step2: "A aplicar filme termorretrátil virtual...",
-        step3: "A finalizar renderização..."
-      },
-      result: {
-        before: "Foto Original",
-        after: "Com Confinamento",
-        regenerate: "Tentar Outra Imagem",
-        disclaimer: "Esta é uma simulação gerada por IA apenas para fins de visualização. Os resultados reais podem variar."
-      },
-      error: {
-        title: "Falha na Geração",
-        desc: "Não conseguimos processar esta imagem. Por favor, tente uma foto mais clara ou um ângulo diferente."
-      }
+      title: "Safe Shield IA",
+      subtitle: "Visualize a nossa solução no seu edifício.",
+      dropzone: { drag: "Arraste a foto do projeto", or: "ou", browse: "Explorar", support: "JPG/PNG até 10MB" },
+      processing: { title: "A processar...", step1: "A analisar...", step2: "A aplicar filme...", step3: "A renderizar..." },
+      result: { before: "Original", after: "Simulação IA", regenerate: "Novo Scan", disclaimer: "Simulação gerada por IA." },
+      error: { title: "Falha no Scan", desc: "Tente uma foto mais clara." }
     }
   }
 };

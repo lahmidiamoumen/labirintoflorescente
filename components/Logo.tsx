@@ -14,52 +14,38 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10" }) => {
       className={className}
       aria-labelledby="logoTitle"
     >
-      <title id="logoTitle">Labirinto Florescente Logo</title>
+      <title id="logoTitle">Safe Shield Logo</title>
       
-      {/* Isometric Cube (The "Building" / "Containment Unit") */}
-      {/* Top Face */}
+      {/* Structural Frame (Now Darker for Contrast) */}
       <path 
-        d="M50 5 L90 25 L50 45 L10 25 Z" 
-        className="fill-transparent stroke-white stroke-[3]"
-        strokeLinejoin="round"
-      />
-      
-      {/* Right Face */}
-      <path 
-        d="M90 25 V75 L50 95 V45 Z" 
-        className="fill-transparent stroke-slate-300 stroke-[3]"
-        strokeLinejoin="round"
-      />
-      
-      {/* Left Face */}
-      <path 
-        d="M10 25 V75 L50 95 V45 Z" 
-        className="fill-transparent stroke-slate-300 stroke-[3]"
+        d="M50 8 L92 28 V72 L50 92 L8 72 V28 Z" 
+        className="stroke-brand-dark stroke-[5]"
         strokeLinejoin="round"
       />
 
-      {/* "Shrink Wrap" Binding Lines (The Containment) */}
+      {/* Isometric Building Core */}
       <path 
-        d="M10 40 L50 60 L90 40" 
-        className="stroke-white stroke-[2] opacity-60"
-        fill="none"
+        d="M50 15 L80 30 V60 L50 75 L20 60 V30 Z" 
+        className="fill-slate-50 stroke-brand-blue stroke-[3]"
+        strokeLinejoin="round"
       />
+      
+      {/* "The Shield" (The Wrap) */}
       <path 
-        d="M10 60 L50 80 L90 60" 
-        className="stroke-white stroke-[2] opacity-60"
-        fill="none"
-      />
-
-      {/* The "Florescente" Safety Strap (Orange Highlight) */}
-      <path 
-        d="M50 5 V45 L90 25" 
-        className="stroke-brand-orange stroke-[4]"
+        d="M50 15 V45 L80 30" 
+        className="stroke-brand-orange stroke-[6]"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      
-      {/* Central Anchor Point */}
-      <circle cx="50" cy="45" r="4" className="fill-brand-orange" />
+
+      <path 
+        d="M20 45 L50 60 L80 45" 
+        className="stroke-brand-blue/30 stroke-[2]"
+        fill="none"
+      />
+
+      {/* Focal Point */}
+      <circle cx="50" cy="45" r="5" className="fill-brand-orange shadow-sm" />
     </svg>
   );
 };
