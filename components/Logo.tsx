@@ -16,36 +16,46 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10" }) => {
     >
       <title id="logoTitle">Safe Shield Logo</title>
       
-      {/* Structural Frame (Now Darker for Contrast) */}
+      {/* Isometric Cube (The "Building" / "Containment Unit") */}
+      {/* Top Face */}
       <path 
-        d="M50 8 L92 28 V72 L50 92 L8 72 V28 Z" 
-        className="stroke-brand-dark stroke-[5]"
-        strokeLinejoin="round"
-      />
-
-      {/* Isometric Building Core */}
-      <path 
-        d="M50 15 L80 30 V60 L50 75 L20 60 V30 Z" 
-        className="fill-slate-50 stroke-brand-blue stroke-[3]"
+        d="M50 15 L85 32 L50 49 L15 32 Z" 
+        className="fill-slate-50 stroke-brand-dark stroke-[3.5]"
         strokeLinejoin="round"
       />
       
-      {/* "The Shield" (The Wrap) */}
+      {/* Right Face */}
       <path 
-        d="M50 15 V45 L80 30" 
-        className="stroke-brand-orange stroke-[6]"
-        strokeLinecap="round"
+        d="M85 32 V72 L50 89 V49 Z" 
+        className="fill-slate-100 stroke-brand-dark stroke-[3.5]"
+        strokeLinejoin="round"
+      />
+      
+      {/* Left Face */}
+      <path 
+        d="M15 32 V72 L50 89 V49 Z" 
+        className="fill-slate-200 stroke-brand-dark stroke-[3.5]"
         strokeLinejoin="round"
       />
 
+      {/* The "Safety Wrap" Highlight (Orange Binding Line) */}
       <path 
-        d="M20 45 L50 60 L80 45" 
-        className="stroke-brand-blue/30 stroke-[2]"
+        d="M15 45 L50 62 L85 45" 
+        className="stroke-brand-orange stroke-[4.5]"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
       />
 
-      {/* Focal Point */}
-      <circle cx="50" cy="45" r="5" className="fill-brand-orange shadow-sm" />
+      {/* Blue Containment Detail */}
+      <path 
+        d="M50 15 V49" 
+        className="stroke-brand-blue stroke-[3.5]"
+        strokeLinecap="round"
+      />
+      
+      {/* Central Secure Point */}
+      <circle cx="50" cy="49" r="4.5" className="fill-brand-orange" />
     </svg>
   );
 };
