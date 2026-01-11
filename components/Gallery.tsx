@@ -3,6 +3,7 @@ import React from 'react';
 import { Language } from '../types';
 import { Shield, Maximize2, CheckCircle2, Ruler, Warehouse, Building2 } from 'lucide-react';
 import { TRANSLATIONS } from '../constants';
+import { GALLERY_IMG_1, GALLERY_IMG_2, GALLERY_IMG_3 } from '../assets/images';
 
 interface GalleryProps {
   language: Language;
@@ -26,7 +27,7 @@ const PROJECTS = [
       FR: "Confinement",
       PT: "Confinamento"
     },
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200&auto=format&fit=crop", 
+    image: GALLERY_IMG_1,
     icon: <Building2 className="w-5 h-5" />,
     stats: "2,400 m²",
     span: "md:col-span-2 md:row-span-2"
@@ -48,7 +49,7 @@ const PROJECTS = [
       FR: "Filets Sécurité",
       PT: "Redes Segurança"
     },
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
+    image: GALLERY_IMG_2,
     icon: <Warehouse className="w-5 h-5" />,
     stats: "EN 1263-1",
     span: "md:col-span-1 md:row-span-1"
@@ -70,7 +71,7 @@ const PROJECTS = [
       FR: "Contrôle Poussière",
       PT: "Controlo Poeira"
     },
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+    image: GALLERY_IMG_3,
     icon: <Shield className="w-5 h-5" />,
     stats: "100% Hermetic",
     span: "md:col-span-1 md:row-span-1"

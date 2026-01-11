@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ShieldCheck, Award, HardHat, CheckCircle2, ChevronLeft, ChevronRight, Biohazard } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
+import { ABOUT_IMG_ASBESTOS, ABOUT_IMG_NETS, ABOUT_IMG_WRAP } from '../assets/images';
 
 interface AboutProps {
   language: Language;
@@ -14,15 +15,15 @@ const About: React.FC<AboutProps> = ({ language }) => {
 
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000&auto=format&fit=crop",
+      src: ABOUT_IMG_ASBESTOS,
       title: language === Language.FR ? "Confinement Intégral Amiante" : language === Language.PT ? "Confinamento Integral de Amianto" : "Full Asbestos Containment"
     },
     {
-      src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop",
+      src: ABOUT_IMG_NETS,
       title: language === Language.FR ? "Filets de Protection Industriels" : language === Language.PT ? "Redes de Proteção Industrial" : "Industrial Safety Nets"
     },
     {
-      src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000&auto=format&fit=crop",
+      src: ABOUT_IMG_WRAP,
       title: language === Language.FR ? "Systèmes Thermo-Rétractables" : language === Language.PT ? "Sistemas Termorretráteis" : "Thermo-Retractable Enclosures"
     }
   ];
@@ -61,7 +62,9 @@ const About: React.FC<AboutProps> = ({ language }) => {
                         className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-1000"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-60"></div>
-                    <div className="absolute bottom-12 left-8 right-8 text-white">
+                    
+                    {/* Caption Text - Positioned Bottom Left */}
+                    <div className="absolute bottom-12 left-8 right-8 text-white z-20 pointer-events-none">
                         <p className="font-black text-2xl border-l-4 border-brand-orange pl-6 drop-shadow-lg animate-fade-in uppercase tracking-tighter">
                         {img.title}
                         </p>
@@ -69,25 +72,27 @@ const About: React.FC<AboutProps> = ({ language }) => {
                  </div>
                ))}
 
-               {/* Carousel Navigation - Moved to Sides to avoid overlapping text */}
-               <button 
-                  onClick={prevSlide} 
-                  className="absolute top-1/2 left-4 -translate-y-1/2 z-20 p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
-                  aria-label="Previous"
-                >
-                  <ChevronLeft size={24} />
-               </button>
-               <button 
-                  onClick={nextSlide} 
-                  className="absolute top-1/2 right-4 -translate-y-1/2 z-20 p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
-                  aria-label="Next"
-                >
-                  <ChevronRight size={24} />
-               </button>
+               {/* Carousel Navigation - Moved to Bottom Right to avoid text overlap */}
+               <div className="absolute bottom-4 right-4 z-30 flex gap-2">
+                 <button 
+                    onClick={prevSlide} 
+                    className="p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
+                    aria-label="Previous"
+                  >
+                    <ChevronLeft size={24} />
+                 </button>
+                 <button 
+                    onClick={nextSlide} 
+                    className="p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
+                    aria-label="Next"
+                  >
+                    <ChevronRight size={24} />
+                 </button>
+               </div>
             </div>
 
-            {/* Floating Technical Label - Translated and Positioned */}
-            <div className="absolute -bottom-8 -left-4 md:-bottom-10 md:-left-6 bg-brand-dark text-white p-6 md:p-8 rounded-[2rem] shadow-2xl hidden lg:block max-w-[300px] border-t-4 border-brand-orange z-30 animate-slide-up">
+            {/* Floating Technical Label - Moved to Top Left to avoid overlapping bottom caption */}
+            <div className="absolute -top-6 -left-4 md:-top-8 md:-left-6 bg-brand-dark text-white p-6 md:p-8 rounded-[2rem] shadow-2xl hidden lg:block max-w-[300px] border-t-4 border-brand-orange z-30 animate-slide-up">
               <div className="flex items-center mb-4">
                 <Biohazard className="text-brand-orange h-6 w-6 mr-3 flex-shrink-0" />
                 <span className="font-black uppercase tracking-widest text-[10px]">{t.hazardTitle}</span>
