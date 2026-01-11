@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
         
         {/* Page Load Reveal */}
         <div className="absolute inset-0 flex pointer-events-none z-30">
-            {[0, 100, 200, 300].map((delay, i) => (
+            {[0, 100, 200, 300, 400, 500].map((delay, i) => (
                 <div 
                     key={i} 
                     className="h-full bg-white flex-1 origin-top animate-column-reveal"
