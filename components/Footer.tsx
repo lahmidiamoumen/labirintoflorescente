@@ -46,8 +46,8 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           <div className="flex flex-col gap-6">
             <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">{t.contactTitle}</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="LinkedIn"><Linkedin size={20} /></a>
-              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="Email"><Mail size={20} /></a>
+              <a href="https://www.linkedin.com/company/safe-shield/" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="mailto:safeshield@gmail.com" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="Email"><Mail size={20} /></a>
             </div>
           </div>
         </div>
