@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Logo Icon -->
+  <g transform="translate(100, 150)">
+    <path d="M50 15 L85 32 L50 49 L15 32 Z" fill="#f8fafc" stroke="#0ea5e9" stroke-width="2"/>
+    <path d="M85 32 V72 L50 89 V49 Z" fill="#cbd5e1" stroke="#0ea5e9" stroke-width="2"/>
+    <path d="M15 32 V72 L50 89 V49 Z" fill="#94a3b8" stroke="#0ea5e9" stroke-width="2"/>
+    <path d="M15 45 L50 62 L85 45" stroke="#f97316" stroke-width="4" fill="none"/>
+  </g>
+
+  <!-- Text -->
+  <text x="100" y="320" font-family="sans-serif" font-weight="900" font-size="80" fill="white" letter-spacing="-2">SAFE SHIELD</text>
+  <text x="100" y="380" font-family="sans-serif" font-weight="bold" font-size="30" fill="#0ea5e9" letter-spacing="4">THERMO-RETRACTABLE CONTAINMENT</text>
+  
+  <!-- Decoration -->
+  <rect x="100" y="420" width="100" height="8" fill="#f97316"/>
+  
+  <!-- Tagline -->
+  <text x="100" y="500" font-family="sans-serif" font-size="24" fill="#94a3b8">Asbestos Removal • Safety Nets • Industrial Wrapping</text>
+  
+  <!-- Domain -->
+  <text x="1100" y="580" text-anchor="end" font-family="sans-serif" font-weight="bold" font-size="24" fill="#475569">safeshield.eu</text>
+</svg>

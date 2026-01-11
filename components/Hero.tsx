@@ -3,6 +3,7 @@ import React from 'react';
 import { ChevronRight, ShieldCheck, Plus, Target, Layers } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
+import { HERO_IMG } from '../assets/images';
 
 interface HeroProps {
   language: Language;
@@ -17,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       {/* 1. Background Environment */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070&auto=format&fit=crop" 
+          src={HERO_IMG} 
           alt="Technical Scaffolding Site" 
           className="w-full h-full object-cover opacity-60 mix-blend-multiply" 
         />
