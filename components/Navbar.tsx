@@ -23,18 +23,30 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 py-2 shadow-lg' : 'bg-transparent py-5'
+    <nav className={`fixed w-full z-[70] transition-all duration-300 ${
+      scrolled && !isOpen 
+        ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 py-2 shadow-lg' 
+        : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between h-16 md:h-20 transition-all duration-300">
           
           <div className="flex-shrink-0 flex items-center gap-4 cursor-pointer group" onClick={() => window.location.href = '/'}>
-            <Logo className="w-14 h-14 transition-transform duration-500 group-hover:scale-110" />
+            <Logo className="w-12 h-12 md:w-14 md:h-14 transition-transform duration-500 group-hover:scale-110" />
             <div className="flex flex-col leading-none">
-              <span className="font-black text-2xl tracking-tighter text-brand-dark">SAFE</span>
-              <span className="text-[0.7rem] text-brand-blue font-bold tracking-[0.45em] mt-0.5">SHIELD</span>
+              <span className="font-black text-xl md:text-2xl tracking-tighter text-brand-dark">SAFE</span>
+              <span className="text-[0.6rem] md:text-[0.7rem] text-brand-blue font-bold tracking-[0.45em] mt-0.5">SHIELD</span>
             </div>
           </div>
 
@@ -42,6 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
             <a href="#home" className="text-sm font-bold text-slate-700 hover:text-brand-blue transition-colors uppercase tracking-wider">{t.home}</a>
             <a href="#about" className="text-sm font-bold text-slate-700 hover:text-brand-blue transition-colors uppercase tracking-wider">{t.about}</a>
             <a href="#services" className="text-sm font-bold text-slate-700 hover:text-brand-blue transition-colors uppercase tracking-wider">{t.services}</a>
+            <a href="#gallery" className="text-sm font-bold text-slate-700 hover:text-brand-blue transition-colors uppercase tracking-wider">{t.gallery}</a>
             
             <a href="#try-ai" className="inline-flex items-center px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-blue text-xs font-black uppercase tracking-widest hover:bg-brand-blue/20 transition-all">
               <Sparkles className="w-3 h-3 mr-2" />
@@ -90,6 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
             <a href="#home" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.home}</a>
             <a href="#about" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.about}</a>
             <a href="#services" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.services}</a>
+            <a href="#gallery" onClick={toggleMenu} className="text-3xl font-black text-brand-dark hover:text-brand-blue transition-colors">{t.gallery}</a>
             
             {/* Language Selector for Mobile */}
             <div className="flex flex-col items-center gap-4 py-4 border-t border-slate-100 mt-4">

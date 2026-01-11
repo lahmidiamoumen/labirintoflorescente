@@ -2,7 +2,7 @@
 import React from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
-import { Linkedin, Mail, Shield } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -20,28 +20,34 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               <Logo className="w-12 h-12" />
               <div className="flex flex-col">
                 <span className="font-black text-2xl tracking-tighter text-slate-900">SAFE SHIELD</span>
-                <span className="text-[0.6rem] text-brand-blue font-bold tracking-[0.4em]">PRECISION SAFETY</span>
+                <span className="text-[0.6rem] text-brand-blue font-bold tracking-[0.4em]">{t.brandSubtitle}</span>
               </div>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed">
-              Leading the standard for environmental containment and safety engineering in European construction.
+              {t.tagline}
             </p>
           </div>
           
           <div className="flex flex-col gap-6">
-            <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">Technical Units</h4>
+            <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">{t.unitsTitle}</h4>
             <div className="flex flex-col gap-3 text-slate-500 font-bold text-sm">
-              <a href="#services" className="hover:text-brand-blue transition-colors">Heat-Shrink Systems</a>
-              <a href="#services" className="hover:text-brand-blue transition-colors">Hazardous Mitigation</a>
-              <a href="#services" className="hover:text-brand-blue transition-colors">Safety Netting</a>
+              <a href="#services" className="hover:text-brand-blue transition-colors">
+                {language === Language.PT ? "Sistemas de Termorretrátil" : language === Language.FR ? "Systèmes Thermorétractables" : "Heat-Shrink Systems"}
+              </a>
+              <a href="#services" className="hover:text-brand-blue transition-colors">
+                {language === Language.PT ? "Descontaminação Amianto" : language === Language.FR ? "Désamiantage Technique" : "Asbestos Decontamination"}
+              </a>
+              <a href="#services" className="hover:text-brand-blue transition-colors">
+                {language === Language.PT ? "Redes de Proteção" : language === Language.FR ? "Filets de Protection" : "Safety Netting"}
+              </a>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
-            <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">Contact Us</h4>
+            <h4 className="font-black text-slate-900 uppercase tracking-widest text-xs">{t.contactTitle}</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm"><Linkedin size={20} /></a>
-              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm"><Mail size={20} /></a>
+              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="#" className="w-12 h-12 bg-white rounded-xl border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm" aria-label="Email"><Mail size={20} /></a>
             </div>
           </div>
         </div>

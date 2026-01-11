@@ -58,6 +58,7 @@ export interface TranslationContent {
     home: string;
     about: string;
     services: string;
+    gallery: string;
     contact: string;
     tryAi: string;
   };
@@ -72,6 +73,8 @@ export interface TranslationContent {
     companyName: string;
     description: string;
     specialization: string;
+    hazardTitle: string;
+    hazardDescription: string;
   };
   services: {
     title: string;
@@ -82,9 +85,21 @@ export interface TranslationContent {
       decontamination: ServiceContent;
     };
   };
+  gallery: {
+    title: string;
+    subtitle: string;
+    label: string;
+    viewReport: string;
+    stats: {
+      completed: string;
+      integrity: string;
+      incidents: string;
+    };
+  };
   contact: {
     title: string;
     subtitle: string;
+    commercialLabel: string;
     form: {
       name: string;
       email: string;
@@ -96,10 +111,14 @@ export interface TranslationContent {
     address: string;
   };
   footer: {
+    unitsTitle: string;
+    contactTitle: string;
     rights: string;
     privacy: string;
     terms: string;
     cookies: string;
+    tagline: string;
+    brandSubtitle: string;
   };
   legal: {
     privacy: LegalPageContent;

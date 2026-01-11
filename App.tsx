@@ -6,6 +6,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 import { Reveal } from './components/Reveal';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
@@ -64,6 +65,9 @@ const App: React.FC = () => {
             </Reveal>
             <Reveal width="100%" mode="slide">
               <Services language={language} />
+            </Reveal>
+            <Reveal width="100%" mode="fade">
+              <Gallery language={language} />
             </Reveal>
             <Reveal width="100%" mode="fade">
               <Contact language={language} />

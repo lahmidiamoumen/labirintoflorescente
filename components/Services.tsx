@@ -1,6 +1,6 @@
 
 import React, { useRef, useState } from 'react';
-import { Box, Home, HardHat, Biohazard, ArrowRight } from 'lucide-react';
+import { HardHat, Factory, Umbrella, Wheat, ArrowRight } from 'lucide-react';
 import { Language, ServiceContent } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -13,26 +13,26 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
 
   const serviceList = [
     {
-      id: 'containment',
-      icon: <Box className="h-10 w-10 text-white" />,
-      content: t.items.containment,
-      gradient: 'from-blue-500 to-sky-400',
-    },
-    {
-      id: 'roofing',
+      id: 'containment', // Under-roof & Nets
       icon: <HardHat className="h-10 w-10 text-white" />,
-      content: t.items.roofing,
+      content: t.items.containment,
       gradient: 'from-orange-500 to-amber-400',
     },
     {
-      id: 'indoorOutdoor',
-      icon: <Home className="h-10 w-10 text-white" />,
+      id: 'indoorOutdoor', // Civil Engineering & Industry
+      icon: <Factory className="h-10 w-10 text-white" />,
       content: t.items.indoorOutdoor,
       gradient: 'from-slate-700 to-slate-500',
     },
     {
-      id: 'decontamination',
-      icon: <Biohazard className="h-10 w-10 text-white" />,
+      id: 'roofing', // Structure & Over-roofing
+      icon: <Umbrella className="h-10 w-10 text-white" />,
+      content: t.items.roofing,
+      gradient: 'from-blue-500 to-sky-400',
+    },
+    {
+      id: 'decontamination', // Agri-food
+      icon: <Wheat className="h-10 w-10 text-white" />,
       content: t.items.decontamination,
       gradient: 'from-emerald-600 to-teal-400',
     }
@@ -43,7 +43,7 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-brand-blue font-extrabold tracking-widest uppercase text-sm mb-4">
-            Technical Precision
+            {language === Language.PT ? "Nossos Setores" : language === Language.FR ? "Nos Secteurs" : "Our Sectors"}
           </h2>
           <h3 className="text-4xl md:text-6xl font-black text-slate-900 mb-8">
             {t.title}
@@ -71,7 +71,6 @@ interface ServiceCardProps {
     language: Language;
 }
 
-// Fix: Use React.FC to handle standard component props like 'key' and children
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, language }) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -100,16 +99,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, language }) => {
                 {service.icon}
             </div>
 
-            <h4 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-blue transition-colors relative z-20">
+            <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-brand-blue transition-colors relative z-20">
                 {service.content.title}
             </h4>
-            <p className="text-slate-500 text-base leading-relaxed mb-8 relative z-20">
+            <p className="text-slate-500 text-sm leading-relaxed mb-8 relative z-20">
                 {service.content.description}
             </p>
 
             <div className="mt-auto relative z-20">
-                <a href="#contact" className="inline-flex items-center text-sm font-black text-slate-900 group-hover:text-brand-orange transition-colors uppercase tracking-widest">
-                    {language === Language.PT ? "Saber Mais" : "Learn More"}
+                <a href="#contact" className="inline-flex items-center text-xs font-black text-slate-900 group-hover:text-brand-orange transition-colors uppercase tracking-widest">
+                    {language === Language.PT ? "Saber Mais" : language === Language.FR ? "En Savoir Plus" : "Learn More"}
                     <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-2 transition-transform" />
                 </a>
             </div>

@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070&auto=format&fit=crop" 
-          alt="Modern Industrial Project" 
+          alt="Technical Scaffolding Site" 
           className="w-full h-full object-cover opacity-60 mix-blend-multiply" 
         />
         
@@ -65,9 +65,9 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             
             {/* Left: Messaging */}
             <div className="max-w-3xl">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-brand-blue/20 bg-white/50 backdrop-blur-sm text-brand-blue text-xs font-bold tracking-[0.2em] uppercase mb-10 opacity-0 animate-slide-up shadow-sm" style={{ animationDelay: '800ms' }}>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-brand-blue/20 bg-white/50 backdrop-blur-sm text-brand-blue text-xs font-black tracking-[0.2em] uppercase mb-10 opacity-0 animate-slide-up shadow-sm" style={{ animationDelay: '800ms' }}>
                   <ShieldCheck className="w-4 h-4 mr-2" />
-                  {language === Language.PT ? "Líder em Confinamento Termo-Retrátil" : language === Language.FR ? "Leader en Confinement Thermique" : "Leaders in Heat-Shrink Containment"}
+                  {language === Language.PT ? "Confinamento Hermético Certificado" : language === Language.FR ? "Confinement Hermétique Certifié" : "Certified Hermetic Containment"}
                 </div>
                 
                 <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-slate-900 tracking-tighter mb-10 leading-none">
@@ -79,12 +79,12 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
                 
                 <div className="relative opacity-0 animate-slide-up" style={{ animationDelay: '1400ms' }}>
                    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-orange rounded-full"></div>
-                   <p className="text-xl md:text-3xl text-slate-700 font-bold pl-8 leading-tight max-w-xl">
+                   <p className="text-xl md:text-3xl text-slate-700 font-black pl-8 leading-tight max-w-xl tracking-tight">
                     {t.headline}
                    </p>
                 </div>
                 
-                <p className="text-lg text-slate-500 mt-8 mb-12 max-w-xl font-medium leading-relaxed opacity-0 animate-slide-up" style={{ animationDelay: '1600ms' }}>
+                <p className="text-lg text-slate-500 mt-8 mb-12 max-w-xl font-bold leading-relaxed opacity-0 animate-slide-up" style={{ animationDelay: '1600ms' }}>
                   {t.subheadline}
                 </p>
 
@@ -109,12 +109,9 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
                     <div className="w-full h-full animate-[float_8s_ease-in-out_infinite]">
                         <svg viewBox="0 0 500 500" className="w-full h-full drop-shadow-[0_45px_45px_rgba(0,0,0,0.1)]">
                             <defs>
-                                {/* Clip Path for the Wrapping Effect */}
                                 <clipPath id="scannerClip">
                                     <rect className="animate-[clipScan_6s_linear_infinite]" x="0" y="0" width="500" height="0" />
                                 </clipPath>
-                                
-                                {/* Glow for the Scanner Line */}
                                 <filter id="glow">
                                     <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                                     <feMerge>
@@ -123,27 +120,17 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
                                 </filter>
                             </defs>
 
-                            {/* --- LAYER 1: BASE BUILDING (UNWRAPPED) --- */}
                             <g stroke="#cbd5e1" strokeWidth="1.5">
-                                {/* Floor Plane */}
                                 <path d="M120 380 L250 320 L380 380 L250 440 Z" fill="#f8fafc" />
-                                
-                                {/* Building Walls */}
                                 <path d="M120 380 V180 L250 120 V320 Z" fill="#f1f5f9" />
                                 <path d="M380 380 V180 L250 120 V320 Z" fill="#e2e8f0" />
-                                
-                                {/* Rooftop Details */}
                                 <path d="M120 180 L250 120 L380 180 L250 240 Z" fill="#cbd5e1" />
-                                <rect x="235" y="150" width="30" height="20" fill="#94a3b8" transform="skewY(-25) translate(40, 180)" />
-
-                                {/* Windows (Grid Pattern) */}
                                 <g fill="#64748b" opacity="0.4">
                                     {[200, 240, 280, 320, 360].map(y => (
                                         <React.Fragment key={y}>
                                             <rect x="145" y={y-15} width="12" height="8" />
                                             <rect x="175" y={y-15} width="12" height="8" />
                                             <rect x="205" y={y-15} width="12" height="8" />
-                                            
                                             <rect x="280" y={y-15} width="12" height="8" />
                                             <rect x="310" y={y-15} width="12" height="8" />
                                             <rect x="340" y={y-15} width="12" height="8" />
@@ -152,60 +139,27 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
                                 </g>
                             </g>
 
-                            {/* --- LAYER 2: THE WRAPPED BUILDING (REVEALED BY SCAN) --- */}
                             <g clipPath="url(#scannerClip)">
-                                {/* The White Confinement Cover */}
-                                <path 
-                                    d="M115 385 V175 L250 110 V320 Z" 
-                                    fill="white" 
-                                    stroke="white" 
-                                    strokeWidth="1"
-                                />
-                                <path 
-                                    d="M385 385 V175 L250 110 V320 Z" 
-                                    fill="#f8fafc" 
-                                    stroke="white" 
-                                    strokeWidth="1"
-                                />
-                                <path 
-                                    d="M115 175 L250 110 L385 175 L250 240 Z" 
-                                    fill="white" 
-                                    stroke="#0ea5e9" 
-                                    strokeWidth="2"
-                                />
-
-                                {/* Glossy Sheen Detail */}
-                                <path d="M150 150 L200 130" stroke="rgba(14,165,233,0.1)" strokeWidth="15" opacity="0.5" />
-                                
-                                {/* Confinement Tension Straps */}
+                                <path d="M115 385 V175 L250 110 V320 Z" fill="white" stroke="white" strokeWidth="1" />
+                                <path d="M385 385 V175 L250 110 V320 Z" fill="#f8fafc" stroke="white" strokeWidth="1" />
+                                <path d="M115 175 L250 110 L385 175 L250 240 Z" fill="white" stroke="#0ea5e9" strokeWidth="2" />
                                 <g stroke="#0ea5e9" strokeWidth="2" opacity="0.3">
                                     <path d="M115 220 L250 160 L385 220" fill="none" />
                                     <path d="M115 280 L250 220 L385 280" fill="none" />
                                     <path d="M115 340 L250 280 L385 340" fill="none" />
                                 </g>
-
-                                {/* Branding on the Tarp */}
                                 <text x="180" y="260" className="text-[12px] font-black fill-brand-blue/30 tracking-widest select-none" transform="rotate(-25, 180, 260)">SAFE SHIELD</text>
                             </g>
 
-                            {/* --- THE SCANNER LINE --- */}
                             <g className="animate-[scanLine_6s_linear_infinite]">
-                                <line 
-                                    x1="50" y1="0" x2="450" y2="0" 
-                                    stroke="#0ea5e9" 
-                                    strokeWidth="3" 
-                                    filter="url(#glow)"
-                                />
+                                <line x1="50" y1="0" x2="450" y2="0" stroke="#0ea5e9" strokeWidth="3" filter="url(#glow)" />
                                 <circle cx="50" cy="0" r="4" fill="#0ea5e9" />
                                 <circle cx="450" cy="0" r="4" fill="#0ea5e9" />
-                                
-                                {/* Vertical Laser Dots */}
                                 <rect x="248" y="-10" width="4" height="20" fill="#f97316" filter="url(#glow)" />
                             </g>
                         </svg>
                     </div>
 
-                    {/* Dynamic Status Badge */}
                     <div className="absolute top-1/4 -right-8 bg-white/90 backdrop-blur-xl p-5 rounded-2xl shadow-2xl border border-slate-100 animate-[bounce_6s_ease-in-out_infinite]">
                         <div className="flex items-center gap-4">
                             <div className="relative">
@@ -215,8 +169,8 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
                                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-orange rounded-full animate-ping"></div>
                             </div>
                             <div>
-                                <p className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">Wrap Progress</p>
-                                <p className="text-xl font-black text-slate-900 leading-none">SECURED</p>
+                                <p className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">Seal Integrity</p>
+                                <p className="text-xl font-black text-slate-900 leading-none">HERMETIC</p>
                             </div>
                         </div>
                     </div>

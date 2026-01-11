@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ShieldCheck, Award, HardHat, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShieldCheck, Award, HardHat, CheckCircle2, ChevronLeft, ChevronRight, Biohazard } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -14,16 +14,16 @@ const About: React.FC<AboutProps> = ({ language }) => {
 
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1591588582259-e675bd2e6088?q=80&w=1000&auto=format&fit=crop",
-      title: language === Language.FR ? "Confinement Intégral" : language === Language.PT ? "Confinamento Integral" : "Total Containment"
+      src: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000&auto=format&fit=crop",
+      title: language === Language.FR ? "Confinement Intégral Amiante" : language === Language.PT ? "Confinamento Integral de Amianto" : "Full Asbestos Containment"
     },
     {
-      src: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&q=80&w=1000",
-      title: language === Language.FR ? "Structure Industrielle" : language === Language.PT ? "Estrutura Industrial" : "Industrial Structure"
+      src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop",
+      title: language === Language.FR ? "Filets de Protection Industriels" : language === Language.PT ? "Redes de Proteção Industrial" : "Industrial Safety Nets"
     },
     {
-      src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000",
-      title: language === Language.FR ? "Sécurité Avancée" : language === Language.PT ? "Segurança Avançada" : "Advanced Safety"
+      src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000&auto=format&fit=crop",
+      title: language === Language.FR ? "Systèmes Thermo-Rétractables" : language === Language.PT ? "Sistemas Termorretráteis" : "Thermo-Retractable Enclosures"
     }
   ];
 
@@ -36,7 +36,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
   };
 
   return (
-    <section id="about" className="py-16 sm:py-16 lg:py-32 bg-white relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-16 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 transform -skew-x-12 translate-x-20"></div>
 
@@ -45,10 +45,10 @@ const About: React.FC<AboutProps> = ({ language }) => {
           
           {/* Image Carousel */}
           <div className="relative mb-20 lg:mb-0 group">
-            <div className="absolute -inset-4 bg-brand-orange/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="absolute -inset-4 bg-brand-orange/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             
             {/* Main Image Container */}
-            <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-white relative z-10 bg-slate-100">
+            <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white relative z-10 bg-slate-100">
                {images.map((img, index) => (
                  <div 
                     key={index}
@@ -58,99 +58,89 @@ const About: React.FC<AboutProps> = ({ language }) => {
                         src={img.src} 
                         alt={img.title}
                         loading="lazy"
-                        className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover w-full h-full transform scale-105 group-hover:scale-110 transition-transform duration-1000"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                        <p className="font-bold text-lg border-l-4 border-brand-orange pl-3 drop-shadow-md animate-fade-in">
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-60"></div>
+                    <div className="absolute bottom-12 left-8 right-8 text-white">
+                        <p className="font-black text-2xl border-l-4 border-brand-orange pl-6 drop-shadow-lg animate-fade-in uppercase tracking-tighter">
                         {img.title}
                         </p>
                     </div>
                  </div>
                ))}
 
-               {/* Carousel Navigation */}
-               <div className="absolute bottom-6 right-6 z-20 flex space-x-2">
-                  <button onClick={prevSlide} className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors text-white border border-white/50" aria-label="Previous">
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button onClick={nextSlide} className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors text-white border border-white/50" aria-label="Next">
-                    <ChevronRight size={20} />
-                  </button>
-               </div>
+               {/* Carousel Navigation - Moved to Sides to avoid overlapping text */}
+               <button 
+                  onClick={prevSlide} 
+                  className="absolute top-1/2 left-4 -translate-y-1/2 z-20 p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
+                  aria-label="Previous"
+                >
+                  <ChevronLeft size={24} />
+               </button>
+               <button 
+                  onClick={nextSlide} 
+                  className="absolute top-1/2 right-4 -translate-y-1/2 z-20 p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-brand-orange transition-all text-white border border-white/20 shadow-lg" 
+                  aria-label="Next"
+                >
+                  <ChevronRight size={24} />
+               </button>
             </div>
 
-            {/* Secondary Image - Floating Bottom Left (Static) */}
-            <div className="absolute -bottom-12 -left-4 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 rounded-lg border-4 border-white shadow-xl overflow-hidden hidden sm:block z-20 animate-[fadeIn_1s_ease-out]">
-               <img 
-                src="https://plus.unsplash.com/premium_photo-1661877303180-1d85c880155d?auto=format&fit=crop&q=80&w=1000" 
-                alt="Industrial safety detail" 
-                loading="lazy"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Floating Info Card */}
-            <div className="absolute -bottom-8 -right-4 md:-right-10 bg-brand-dark p-6 sm:p-8 rounded-lg shadow-xl hidden lg:block max-w-xs border-t-4 border-brand-orange z-30">
-              <div className="flex items-center mb-3">
-                <HardHat className="text-brand-orange h-6 w-6 mr-3" />
-                <span className="text-white font-bold uppercase tracking-wider text-xs">Expert Engineering</span>
+            {/* Floating Technical Label - Translated and Positioned */}
+            <div className="absolute -bottom-8 -left-4 md:-bottom-10 md:-left-6 bg-brand-dark text-white p-6 md:p-8 rounded-[2rem] shadow-2xl hidden lg:block max-w-[300px] border-t-4 border-brand-orange z-30 animate-slide-up">
+              <div className="flex items-center mb-4">
+                <Biohazard className="text-brand-orange h-6 w-6 mr-3 flex-shrink-0" />
+                <span className="font-black uppercase tracking-widest text-[10px]">{t.hazardTitle}</span>
               </div>
-              <p className="text-slate-300 text-sm font-light leading-relaxed">
-                Weather-resistant, dust-tight, and secure. We wrap entire structures for safety and environmental control.
+              <p className="text-slate-300 text-sm font-bold leading-relaxed">
+                {t.hazardDescription}
               </p>
             </div>
           </div>
 
           {/* Text Content */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-                <span className="h-px w-8 bg-brand-orange"></span>
-                <h2 className="text-brand-orange font-bold tracking-widest uppercase text-xs sm:text-sm">
+          <div className="lg:pl-10">
+            <div className="flex items-center space-x-4 mb-6">
+                <span className="h-px w-12 bg-brand-orange"></span>
+                <h2 className="text-brand-orange font-black tracking-[0.3em] uppercase text-xs">
                 {t.companyName}
                 </h2>
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 sm:mb-8 leading-tight">
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-black text-brand-dark mb-8 leading-none tracking-tighter">
               {t.title}
             </h3>
-            <div className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed space-y-6">
+            <div className="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed font-medium">
               <p>{t.description}</p>
             </div>
             
-            <div className="bg-slate-100 rounded-lg p-6 mb-10 border border-slate-200">
-              <p className="text-brand-dark font-medium text-sm flex items-start">
-                <CheckCircle2 className="h-5 w-5 text-brand-blue mr-3 flex-shrink-0 mt-0.5" />
+            <div className="bg-slate-900 rounded-[2rem] p-8 mb-12 border border-slate-800 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/10 rounded-full translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-1000"></div>
+              <p className="text-white font-bold text-base flex items-start relative z-10">
+                <ShieldCheck className="h-6 w-6 text-brand-blue mr-4 flex-shrink-0 mt-0.5" />
                 {t.specialization}
               </p>
             </div>
 
-            {/* Features List */}
+            {/* Technical Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
-                <div className="flex-shrink-0 bg-brand-blue/10 p-2 rounded-md">
-                  <ShieldCheck className="h-6 w-6 text-brand-blue" />
+              <div className="flex items-center p-6 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-brand-blue transition-all duration-300">
+                <div className="flex-shrink-0 bg-brand-blue text-white p-3 rounded-xl shadow-lg shadow-brand-blue/20">
+                  <Biohazard className="h-6 w-6" />
                 </div>
-                <div className="ml-4">
-                  <h4 className="text-base font-bold text-brand-dark">ISO Compliance</h4>
-                  <p className="text-xs text-slate-500 mt-1">Strict adherence to EU safety standards.</p>
-                </div>
-              </div>
-              <div className="flex items-start p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
-                <div className="flex-shrink-0 bg-brand-orange/10 p-2 rounded-md">
-                  <Award className="h-6 w-6 text-brand-orange" />
-                </div>
-                <div className="ml-4">
-                  <h4 className="text-base font-bold text-brand-dark">Premium Materials</h4>
-                  <p className="text-xs text-slate-500 mt-1">High-grade heat shrink films & nets.</p>
+                <div className="ml-5">
+                  <h4 className="text-sm font-black text-brand-dark uppercase tracking-widest">Amianto Removal</h4>
+                  <p className="text-[10px] text-slate-400 mt-1 font-black uppercase tracking-widest">Certified Hermetic Seals</p>
                 </div>
               </div>
-            </div>
-            
-            <div className="mt-10">
-                <a href="#contact" className="text-brand-orange font-bold hover:text-brand-orangeDark transition-colors flex items-center group">
-                    {language === Language.PT ? "Conheça a nossa equipa" : language === Language.FR ? "Rencontrer l'équipe" : "Meet our team"} 
-                    <span className="ml-2 transform group-hover:translate-x-2 transition-transform">→</span>
-                </a>
+              <div className="flex items-center p-6 rounded-2xl bg-slate-50 border border-slate-100 group hover:border-brand-orange transition-all duration-300">
+                <div className="flex-shrink-0 bg-brand-orange text-white p-3 rounded-xl shadow-lg shadow-brand-orange/20">
+                  <HardHat className="h-6 w-6" />
+                </div>
+                <div className="ml-5">
+                  <h4 className="text-sm font-black text-brand-dark uppercase tracking-widest">Industrial Netting</h4>
+                  <p className="text-[10px] text-slate-400 mt-1 font-black uppercase tracking-widest">Certified EN 1263-1</p>
+                </div>
+              </div>
             </div>
           </div>
 

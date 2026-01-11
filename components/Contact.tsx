@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle, User, Globe2 } from 'lucide-react';
+/* Added missing 'Send' icon import from lucide-react */
+import { Mail, Phone, ArrowRight, CheckCircle, User, Globe2, Send } from 'lucide-react';
 import { Language, ServiceContent } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -15,20 +16,26 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
 
   const COMPANY_EMAIL = "safeshield@gmail.com";
   
+  const regions = {
+    [Language.EN]: { FR: "France & Switzerland", INT: "English / International" },
+    [Language.FR]: { FR: "France et Suisse", INT: "Anglaise / International" },
+    [Language.PT]: { FR: "França e Suíça", INT: "Inglês / Internacional" }
+  };
+
   const commercials = [
     {
       name: "Nabil",
-      region: language === Language.FR ? "France et Suisse" : language === Language.PT ? "França e Suíça" : "France & Switzerland",
+      region: regions[language].FR,
       phone: "+33 638 051 006",
       icon: <Globe2 className="w-5 h-5" />,
-      tag: "Commercial"
+      tag: t.commercialLabel
     },
     {
       name: "Moumen",
-      region: language === Language.EN ? "English Speaking" : language === Language.PT ? "Inglês / Internacional" : "Anglaise / International",
+      region: regions[language].INT,
       phone: "+351 920 681 930",
       icon: <User className="w-5 h-5" />,
-      tag: "Commercial"
+      tag: t.commercialLabel
     }
   ];
 
@@ -45,7 +52,7 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
           <div className="sticky top-32">
             <h2 className="text-brand-orange font-black uppercase tracking-[0.4em] text-sm mb-6 flex items-center gap-3">
               <span className="w-8 h-px bg-brand-orange"></span>
-              {language === Language.PT ? "Contacto" : "Connect"}
+              {language === Language.PT ? "Contacto" : language === Language.FR ? "Contact" : "Connect"}
             </h2>
             <h3 className="text-5xl md:text-7xl font-black text-brand-dark mb-10 leading-none">
               {t.title}
@@ -55,7 +62,6 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
             </p>
 
             <div className="space-y-8">
-              {/* Specialized Commercial Contacts */}
               {commercials.map((comm, idx) => (
                 <div key={idx} className="group flex items-center gap-6 p-4 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
                   <div className={`w-14 h-14 rounded-xl flex items-center justify-center border border-slate-200 transition-colors shadow-sm ${idx === 0 ? 'bg-brand-blue/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-white' : 'bg-brand-orange/10 text-brand-orange group-hover:bg-brand-orange group-hover:text-white'}`}>
@@ -76,7 +82,6 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
                 </div>
               ))}
 
-              {/* General Email */}
               <div className="flex items-center gap-6 p-4">
                 <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg">
                   <Mail className="w-6 h-6" />
@@ -142,7 +147,7 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
               
               <div className="flex items-center justify-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-widest">
                 <CheckCircle size={14} className="text-brand-blue" />
-                {language === Language.PT ? "Resposta em 24 horas" : "Response within 24h"}
+                {language === Language.PT ? "Resposta em 24 horas" : language === Language.FR ? "Réponse sous 24h" : "Response within 24h"}
               </div>
             </form>
           </div>
