@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 
 const PARTNERS = [
   "Construction Inc", "SafeBuild", "EuroProtect", "TotalCover", 

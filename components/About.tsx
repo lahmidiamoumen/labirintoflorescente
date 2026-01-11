@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ShieldCheck, Award, HardHat, CheckCircle2, ChevronLeft, ChevronRight, Biohazard } from 'lucide-react';
+import { ShieldCheck, HardHat, ChevronLeft, ChevronRight, Biohazard } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 import { ABOUT_IMG_ASBESTOS, ABOUT_IMG_NETS, ABOUT_IMG_WRAP } from '../assets/images';

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 /* Added missing 'Send' icon import from lucide-react */
-import { Mail, Phone, ArrowRight, CheckCircle, User, Globe2, Send } from 'lucide-react';
+import { Mail, ArrowRight, CheckCircle, User, Globe2, Send } from 'lucide-react';
 import { Language, ServiceContent } from '../types';
 import { TRANSLATIONS } from '../constants';
 

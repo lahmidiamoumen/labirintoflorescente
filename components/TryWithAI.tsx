@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Upload, X, Loader2, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
+import { Upload, Sparkles, AlertCircle } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 import { GoogleGenAI } from "@google/genai";
