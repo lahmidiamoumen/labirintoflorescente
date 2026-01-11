@@ -78,7 +78,7 @@ export const TRANSLATIONS: Record<Language, TranslationContent> = {
     footer: {
       unitsTitle: "Our Services",
       contactTitle: "Contact Info",
-      rights: "Safe Shield by LABIRINTOFLORESCENTE. Containment Specialists.",
+      rights: "Containment Specialists.",
       privacy: "Privacy",
       terms: "Terms",
       cookies: "Cookies",
